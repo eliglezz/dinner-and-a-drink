@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 
 </head>
-<header class="container-fluid grid">
+<header class="container-fluid grid" id="header">
     <div>
         <h1 class="strong">Dinner and a Drink.</h1>
     </div>
@@ -23,6 +23,14 @@
             <button data-theme= "dark" id="dinnerBtn">Dinner</button>
             <button data-theme= "dark" id="drinkBtn">Drinks</button>
         </div>
+        <article class="grid">
+            <div>
+                <form>
+                <label for="ingredient">Ingredient:</label>
+                <input type="text" id="ingredient" name="ingredient">
+            </form>
+            </div>
+        </article>
 
     </main>
     <script src="./assets/js/script.js"></script>

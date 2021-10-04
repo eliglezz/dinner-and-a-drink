@@ -1,10 +1,16 @@
-header {
-    background: salmon;
-    text-align: center;
-}
+
 article {
     margin-top: 0;
     margin-bottom: 0;
+}
+#header {
+    padding-top: 10px;
+    padding-bottom: 2px;
+    text-align: center;
+    
+}
+#header div {
+    height: 50px;
 }
 .container-fluid {
     padding-top: 20px;
