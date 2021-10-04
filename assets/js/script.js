@@ -3,6 +3,8 @@ var appID = "4c72f271"
 var cocktailKey = "9973533"
 var dinnerItems
 var drinkItems
+var dinnerSearch = $(".dinner-container")
+var drinkSearch = $(".drink-container")
 
 
 
@@ -31,3 +33,9 @@ function getDrinks() {
         console.log(data2)
     })
 }
+
+
+dinnerSearch.hide()
+drinkSearch.hide()
+
+
