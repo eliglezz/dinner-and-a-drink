@@ -1,0 +1,23 @@
+header {
+    background: salmon;
+    text-align: center;
+}
+article {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.container-fluid {
+    padding-top: 20px;
+}
+#dinnerBtn {
+    width: 200px;
+    display: inline;
+}
+#drinkBtn {
+    width: 200px;
+    display: inline;
+}
+#buttonholder {
+    display: flex;
+    justify-content: space-around;
+}
