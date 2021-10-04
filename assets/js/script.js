@@ -11,8 +11,8 @@ var drinkBoxBtn = $("#drinkBtn")
 
 //dinner recipes API
 function getRecipes() {
+    dinnerItems = value.value
     var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "?app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&dishType=main_course,desserts,starter"
-
 
     fetch(requestURL)
     .then(function(response) {
@@ -36,7 +36,8 @@ function getDrinks() {
         console.log(data2)
     })
 
-for (var i = 0; i < SOMETHING.length; i++) {
+    //first response only contains drink names, thumbnail pic link, and drink id, second fetch searches each of the first fetch result id's for detailed info on each drink
+for (var i = 0; i < SOMETHING.length; i++)
 var drinkID = data2.drinks.idDrink[i]
 
     var secondSearch = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID
