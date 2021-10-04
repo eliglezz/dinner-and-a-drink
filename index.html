@@ -7,9 +7,10 @@
     <title>Dinner and a Drink</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-<header class="container-fluid grid">
+<header class="container-fluid grid" id="header">
     <div>
         <h1 class="strong">Dinner and a Drink.</h1>
     </div>
@@ -23,6 +24,33 @@
             <button data-theme= "dark" id="dinnerBtn">Dinner</button>
             <button data-theme= "dark" id="drinkBtn">Drinks</button>
         </div>
+        <article class="grid">
+            <div>
+            <form>
+                <label for="ingredients">Ingredients:</label>
+                <input type="text" id="ingredients" name="ingredients">
+            </form>
+            <ul>
+                <li>ingr</li>
+                <li>ingr</li>
+                <li>ingr</li>
+            </ul>
+            </div>
+            <div id="do-it-div"><button id="do-it">Do it</button></div>
+            <div id="tester">
+                <form>
+                    <label for="exclude">Exclude:</label>
+                    <input type="text" id="Exclude" name="Exclude">
+                </form>
+                <ul>
+                    <li>ingr</li>
+                    <li>ingr</li>
+                    <li>ingr</li>
+                </ul>
+                </div>
+            </div>
+
+        </article>
         <article>
             <div class="grid ">
                 <article>
@@ -97,6 +125,13 @@
                 </article>  
             </div>
         </article>
+
+        <div class="container-fluid" id="buttonholder">
+            <button data-theme= "dark" id="dinnerBtn">Dinner</button>
+            <button data-theme= "dark" id="drinkBtn">Drinks</button>
+        </div>
+
+
 
     </main>
     <script src="./assets/js/script.js"></script>

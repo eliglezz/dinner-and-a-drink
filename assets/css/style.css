@@ -1,11 +1,32 @@
-header {
-    background: salmon;
-    text-align: center;
-}
+
 article {
     margin-top: 0;
     margin-bottom: 0;
 }
+#header {
+    padding-top: 10px;
+    padding-bottom: 2px;
+    text-align: center;
+    
+}
+#header div {
+    height: 50px;
+}
+#do-it-div {
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 75px 0;
+    margin-top: 20px;
+
+}
+#do-it {
+    /* height: fit-content; */
+}
+/* #tester {
+
+} */
 .container-fluid {
     padding-top: 20px;
 }
