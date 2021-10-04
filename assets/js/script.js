@@ -37,8 +37,8 @@ function getDrinks() {
     })
 
     //first response only contains drink names, thumbnail pic link, and drink id, second fetch searches each of the first fetch result id's for detailed info on each drink
-for (var i = 0; i < SOMETHING.length; i++)
-var drinkID = data2.drinks.idDrink[i]
+    for (var i = 0; i < SOMETHING.length; i++)
+    var drinkID = data2.drinks.idDrink[i]
 
     var secondSearch = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID
 
@@ -51,8 +51,18 @@ var drinkID = data2.drinks.idDrink[i]
     })
 }
 
+function makeList() {
+    input
+}
 
 
+ingredientAddBtn.on('click', function() {
+    var addIngredient = document.createElement('input')
+    addIngredient.setAttribute('type', 'text')
+    addIngredient.setAttribute('readonly', true)
+    addIngredient.setAttribute('value', form.val())
+    ingredientList.append(addIngredient)
+})
 
 
 
