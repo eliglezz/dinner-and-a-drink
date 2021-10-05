@@ -17,6 +17,7 @@ var searchBtn = $("#do-it")
 var excludeAddBtn = $(".exclude-btn")
 var excludeList = $(".exclude-list")
 var exclude = $("#exclude")
+var recipeContainer = $("#recipe-cards")
 
 
 //dinner recipes API
@@ -34,7 +35,7 @@ function getRecipes() {
     console.log(dinnerItems)
     console.log(excludeItems)
 
-    var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "&app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&ishType=Desserts&dishType=Main%20course&dishType=Starter&imageSize=REGULAR" + excludeItems + "&random=true&field=uri&field=label&field=image&field=source&field=ingredientLines&field=ingredients"
+    var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "&app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&ishType=Desserts&dishType=Main%20course&dishType=Starter&imageSize=REGULAR" + excludeItems + "&random=true&field=uri&field=label&field=image&field=source&field=ingredientLines&field=ingredients&field=url"
 
     console.log(requestURL)
 
@@ -44,19 +45,19 @@ function getRecipes() {
     })
     .then(function(data) {
         console.log(data)
-        $("#second-name").text(data.hits[0].recipe.label)
-        $("#second-link").attr('href', data.hits[0].recipe.uri)
-        $("#second-image").attr('src', data.hits[0].recipe.image)
+        $("#second-name").text(data.hits[1].recipe.label)
+        $("#second-link").attr('href', data.hits[1].recipe.url)
+        $("#second-image").attr('src', data.hits[1].recipe.image)
 
         //create list for ingredients
-        for (var i = 0; i < data.hits[0].recipe.ingredientLines.length; i++) {
-        var eachIngredient = data.hits[0].recipe.ingredientLines[i]    
-        var listedIngredients = document.createElement('li')
-            listedIngredients.textContent = eachIngredient
-            document.querySelector('#second-list').append(eachIngredient)
-            console.log(data.hits[0].recipe.ingredientLines[i])
+        for (var i = 0; i < data.hits[1].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[1].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#second-list").append(listedIngredients)  
         }
       })
+      recipeContainer.show()
 }
 
 //drink recipes API
@@ -87,6 +88,7 @@ function getDrinks() {
     })
 }
 
+//in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
 ingredientAddBtn.on('click', function() {
     var addIngredient = document.createElement('li')
     addIngredient.textContent = ingredients.val()
@@ -106,8 +108,9 @@ excludeAddBtn.on('click', function() {
 
 
 //hides the search boxex until needed currently disabled so we can see them as we build
-// dinnerSearchBox.hide()
-// drinkSearchBox.hide()
+dinnerSearchBox.hide()
+drinkSearchBox.hide()
+recipeContainer.hide()
 
 //shows search boxes based on which user wants to search for
 dinnerBoxBtn.on('click', function() {
