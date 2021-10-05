@@ -115,9 +115,11 @@ recipeContainer.hide()
 //shows search boxes based on which user wants to search for
 dinnerBoxBtn.on('click', function() {
     dinnerSearchBox.show()
+    drinkSearchBox.hide()
 })
 drinkBoxBtn.on('click', function() {
     drinkSearchBox.show()
+    dinnerSearchBox.hide()
 })
 
 //inside search boxes do it button

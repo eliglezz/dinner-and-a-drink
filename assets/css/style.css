@@ -13,21 +13,22 @@ article {
 #header div {
     height: 50px;
 }
-#do-it-div {
+.do-it-div {
     display: flex;
-    margin: 0 auto;
-    width: fit-content;
-    box-sizing: border-box;
-    padding: 75px 0;
-    margin-top: 20px;
+    justify-content: center;
+    height: fit-content;
 
 }
+
 #do-it {
-    /* height: fit-content; */
+    height: fit-content;
+    width: fit-content;
 }
-/* #tester {
+#do-it-drink {
+    height: fit-content;
+    width: fit-content;
+}
 
-} */
 .container-fluid {
     padding-top: 20px;
 }

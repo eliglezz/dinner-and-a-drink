@@ -21,30 +21,77 @@
             <p id="site-info">Welcome! We've all experienced the paralysis of choice when it comes to eating dinner.  We've all had that moment when you have a refrigerator full of delicious ingredients and you can't come up with a single thing to eat or drink.  Well, we have created a simple tool to help get you started.  Just tell us what you have sitting around, and we will help find the perfect recipe to make for dinner, and the perfect cocktail to wash it down.  Get started just below!</p>
         </article>
         <div class="container-fluid" id="buttonholder">
-            <button data-theme= "dark" id="dinnerBtn">Dinner</button>
-            <button data-theme= "dark" id="drinkBtn">Drinks</button>
+            <button type="button" data-theme= "dark" id="dinnerBtn">Dinner</button>
+            <button type="button" data-theme= "dark" id="drinkBtn">Drinks</button>
         </div>
-        <article class="grid recipe-search">
-            <div>
-            <form>
-                <label for="ingredients">Ingredients:</label>
-                <input type="text" id="ingredients" name="ingredients">
-                <button type="button" class="add-btn btn-primary btn-lg btn-block">ADD</button>
-            </form>
-            <ul class="ingredient-list">
-            </ul>
-            </div>
-            <div id="do-it-div"><button id="do-it">Do it</button></div>
-            <div id="tester">
-                <form id="exclude-form">
-                    <label for="exclude">Exclude:</label>
-                    <input type="text" id="exclude" name="exclude">
-                    <button type="button" class="exclude-btn btn-primary btn-lg btn-block">ADD</button>
+        <article class="recipe-search">
+            <div class="grid">
+                <div>
+                <form>
+                    <label for="ingredients">Ingredients:</label>
+                    <input type="text" id="ingredients" name="ingredients">
+                    <button type="button" class="add-btn btn-primary btn-lg btn-block">ADD</button>
                 </form>
-                <ul class="exclude-list">
-                </ul>
+                <p>Add Ingredients you would like incorporated into your recipe.</p>
+                </div>
+                <div>
+                    <ul class="ingredient-list">
+                    </ul>
+                </div>
+                <div>
+                    <ul class="exclude-list">
+                    </ul>
+                </div>
+                <div>
+                    <form id="exclude-form">
+                        <label for="exclude">Exclude:</label>
+                        <input type="text" id="exclude" name="exclude">
+                        <button type="button" class="exclude-btn btn-primary btn-lg btn-block">ADD</button>
+                    </form>
+                    <p>Add Ingredients you would like excluded into your recipe.</p>
                 </div>
             </div>
+            <div class="do-it-div grid"><button id="do-it">Do it!</button></div>
+        </article>
+            
+        <article class="drink-container">
+            <div class= "grid">
+            <div>
+                <form>
+                    <label for="ingredients">Ingredients:</label>
+                    <input type="text" id="ingredients" name="ingredients">
+                    <button type="button" class="add-btn btn-primary btn-lg btn-block">ADD</button>
+                </form>
+                <p>Add ingredients you would like included in your cocktail here!</p>
+            </div>
+            <div>
+                <ul class="ingredient-list">
+                </ul>
+            </div>
+            <div class="drink-parameters">
+                <fieldset>
+                    <legend>Options</legend>
+                    <label for="non-alc">
+                      <input type="radio" id="non-alc" name="size" value="non-alc" checked>
+                      Non-Alcoholic
+                    </label>
+                    <label for="alc">
+                      <input type="radio" id="alc" name="size" value="alc">
+                      Alcoholic
+                    </label>
+                  </fieldset>
+                <fieldset>
+                    <label for="random">
+                      <input type="checkbox" id="random" name="random">
+                      Give me a random Drink!
+                    </label>
+                </fieldset>
+                
+            </div>
+        </div>
+        <div class="do-it-div">
+            <button id="do-it-drink">Do it</button>
+        </div>
 
         </article>
         <article id="recipe-cards">
