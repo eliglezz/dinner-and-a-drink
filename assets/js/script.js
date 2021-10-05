@@ -1,13 +1,22 @@
+//websites access
 var edamamApiKey = "e3dc2dfdc5b7caba73d800f52c560cdc"
 var appID = "4c72f271"
 var cocktailKey = "9973533"
+
+//global available undefined until later
 var dinnerItems
 var drinkItems
 var excludeItems
+
+//dinner box
 var dinnerSearchBox = $(".recipe-search")
-var drinkSearchBox = $(".drink-container")
 var dinnerBoxBtn = $("#dinnerBtn")
+
+//drink box
+var drinkSearchBox = $(".drink-container")
 var drinkBoxBtn = $("#drinkBtn")
+
+//inside dinner search box
 var ingredients = $("#ingredients")
 var ingredientList = $(".ingredient-list")
 var ingredientAddBtn = $(".add-btn")
@@ -45,9 +54,26 @@ function getRecipes() {
     })
     .then(function(data) {
         console.log(data)
+
+        //first card
+        $("#first-name").text(data.hits[0].recipe.label)
+        $("#first-link").attr('href', data.hits[0].recipe.url)
+        $("#first-image").attr('src', data.hits[0].recipe.image)
+        $("#first-name").attr(data.hits[0].recipe.label)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[0].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[0].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#first-list").append(listedIngredients)  
+        }
+
+        //second card
         $("#second-name").text(data.hits[1].recipe.label)
         $("#second-link").attr('href', data.hits[1].recipe.url)
         $("#second-image").attr('src', data.hits[1].recipe.image)
+        $("#second-name").attr(data.hits[1].recipe.label)
 
         //create list for ingredients
         for (var i = 0; i < data.hits[1].recipe.ingredientLines.length; i++) {
@@ -55,6 +81,62 @@ function getRecipes() {
         var listedIngredients = document.createElement("li")
         listedIngredients.textContent = eachIngredient
         $("#second-list").append(listedIngredients)  
+        }
+
+        //third card
+        $("#third-name").text(data.hits[2].recipe.label)
+        $("#third-link").attr('href', data.hits[2].recipe.url)
+        $("#third-image").attr('src', data.hits[2].recipe.image)
+        $("#third-name").attr(data.hits[2].recipe.label)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[2].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[2].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#third-list").append(listedIngredients)  
+        }
+
+        //fourth card
+        $("#fourth-name").text(data.hits[3].recipe.label)
+        $("#fourth-link").attr('href', data.hits[3].recipe.url)
+        $("#fourth-image").attr('src', data.hits[3].recipe.image)
+        $("#fourth-name").attr(data.hits[3].recipe.label)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[3].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[3].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#fourth-list").append(listedIngredients)  
+        }
+
+        //fifth card
+        $("#fifth-name").text(data.hits[4].recipe.label)
+        $("#fifth-link").attr('href', data.hits[4].recipe.url)
+        $("#fifth-image").attr('src', data.hits[4].recipe.image)
+        $("#fifth-name").attr(data.hits[4].recipe.label)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[4].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[4].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#fifth-list").append(listedIngredients)  
+        }
+    
+        //sixth card
+        $("#sixth-name").text(data.hits[5].recipe.label)
+        $("#sixth-link").attr('href', data.hits[5].recipe.url)
+        $("#sixth-image").attr('src', data.hits[5].recipe.image)
+        $("#sixth-name").attr(data.hits[5].recipe.label)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[5].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[5].recipe.ingredientLines[i]
+        var listedIngredients = document.createElement("li")
+        listedIngredients.textContent = eachIngredient
+        $("#sixth-list").append(listedIngredients)  
         }
       })
       recipeContainer.show()
@@ -105,7 +187,10 @@ excludeAddBtn.on('click', function() {
     console.log(excludeArray)
 })
 
+function clearPast() {    
+    ingredientList.innerHTML = ""
 
+}
 
 //hides the search boxex until needed currently disabled so we can see them as we build
 dinnerSearchBox.hide()
@@ -115,9 +200,14 @@ recipeContainer.hide()
 //shows search boxes based on which user wants to search for
 dinnerBoxBtn.on('click', function() {
     dinnerSearchBox.show()
+    drinkSearchBox.hide()
+    recipeContainer.hide()
+    clearPast()
 })
 drinkBoxBtn.on('click', function() {
     drinkSearchBox.show()
+    dinnerSearchBox.hide()
+    recipeContainer.hide()
 })
 
 //inside search boxes do it button
