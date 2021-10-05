@@ -24,28 +24,24 @@
             <button data-theme= "dark" id="dinnerBtn">Dinner</button>
             <button data-theme= "dark" id="drinkBtn">Drinks</button>
         </div>
-        <article class="grid">
+        <article class="grid recipe-search">
             <div>
             <form>
                 <label for="ingredients">Ingredients:</label>
                 <input type="text" id="ingredients" name="ingredients">
+                <button type="button" class="add-btn btn-primary btn-lg btn-block">ADD</button>
             </form>
-            <ul>
-                <li>ingr</li>
-                <li>ingr</li>
-                <li>ingr</li>
+            <ul class="ingredient-list">
             </ul>
             </div>
             <div id="do-it-div"><button id="do-it">Do it</button></div>
             <div id="tester">
-                <form>
+                <form id="exclude-form">
                     <label for="exclude">Exclude:</label>
-                    <input type="text" id="Exclude" name="Exclude">
+                    <input type="text" id="exclude" name="exclude">
+                    <button type="button" class="exclude-btn btn-primary btn-lg btn-block">ADD</button>
                 </form>
-                <ul>
-                    <li>ingr</li>
-                    <li>ingr</li>
-                    <li>ingr</li>
+                <ul class="exclude-list">
                 </ul>
                 </div>
             </div>
@@ -57,22 +53,25 @@
                     <hgroup>
                         <header>
                             <div class="grid">
-                                <h5>Name of Drink/recipe <p>click image for recipe</p></h5>
+                                <h5 id="first-name">Name of Drink/recipe <p>click image for recipe</p></h5>
                                 <a href="http://www.bbcgoodfood.com/recipes/6023/" target="_blank" rel="noopener noreferrer"><img src="https://www.edamam.com/web-img/bb4/bb42725ef7e701a6bddcdf1ac10a04d8.jpg" alt=""></a>   
                             </div>
                         </header>
                         <footer><h6>Ingredients</h6><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ab, nemo dolorum incidunt assumenda temporibus fugiat totam consequuntur ducimus itaque repellat, ipsum eius culpa quisquam possimus nesciunt perferendis quaerat omnis!</p></footer>
                     </hgroup>
                 </article>
-                <article>
+                <article id="second-card">
                     <hgroup>
                         <header>
                             <div class="grid">
-                                <h5>Name of Drink/recipe <p>click image for recipe</p></h5>
-                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt=""></a>   
+                                <h5 id="second-name">Name of Drink/recipe <p>click image for recipe</p></h5>
+                                <a href="" target="_blank" rel="noopener noreferrer" id="second-link"><img src="" alt="" id="second-image"></a>   
                             </div>
                         </header>
-                        <footer><h6>Ingredients</h6><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ab, nemo dolorum incidunt assumenda temporibus fugiat totam consequuntur ducimus itaque repellat, ipsum eius culpa quisquam possimus nesciunt perferendis quaerat omnis!</p></footer>
+                        <footer><h6>Ingredients</h6>
+                            <ul id="second-list">                        
+                            </ul>
+                        </footer>
                     </hgroup>
                 </article>  
             </div>
@@ -134,6 +133,7 @@
 
 
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

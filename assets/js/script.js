@@ -3,16 +3,40 @@ var appID = "4c72f271"
 var cocktailKey = "9973533"
 var dinnerItems
 var drinkItems
-var dinnerSearchBox = $(".dinner-container")
+var excludeItems
+var dinnerSearchBox = $(".recipe-search")
 var drinkSearchBox = $(".drink-container")
 var dinnerBoxBtn = $("#dinnerBtn")
 var drinkBoxBtn = $("#drinkBtn")
+var ingredients = $("#ingredients")
+var ingredientList = $(".ingredient-list")
+var ingredientAddBtn = $(".add-btn")
+var ingredientsArray = []
+var excludeArray = []
+var searchBtn = $("#do-it")
+var excludeAddBtn = $(".exclude-btn")
+var excludeList = $(".exclude-list")
+var exclude = $("#exclude")
 
 
 //dinner recipes API
 function getRecipes() {
-    dinnerItems = value.value
-    var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "?app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&dishType=main_course,desserts,starter"
+    dinnerItems = ingredientsArray.join('%2C')
+    console.log(excludeArray)
+
+    //Adds excluded items into the url if there are any
+    if (excludeArray.length == 0) {
+        excludeItems = ""
+    } else {
+        excludeItems = '&excluded=' + excludeArray.join('&excluded=')
+    }
+    
+    console.log(dinnerItems)
+    console.log(excludeItems)
+
+    var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "&app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&ishType=Desserts&dishType=Main%20course&dishType=Starter&imageSize=REGULAR" + excludeItems + "&random=true&field=uri&field=label&field=image&field=source&field=ingredientLines&field=ingredients"
+
+    console.log(requestURL)
 
     fetch(requestURL)
     .then(function(response) {
@@ -20,7 +44,19 @@ function getRecipes() {
     })
     .then(function(data) {
         console.log(data)
-    })
+        $("#second-name").text(data.hits[0].recipe.label)
+        $("#second-link").attr('href', data.hits[0].recipe.uri)
+        $("#second-image").attr('src', data.hits[0].recipe.image)
+
+        //create list for ingredients
+        for (var i = 0; i < data.hits[0].recipe.ingredientLines.length; i++) {
+        var eachIngredient = data.hits[0].recipe.ingredientLines[i]    
+        var listedIngredients = document.createElement('li')
+            listedIngredients.textContent = eachIngredient
+            document.querySelector('#second-list').append(eachIngredient)
+            console.log(data.hits[0].recipe.ingredientLines[i])
+        }
+      })
 }
 
 //drink recipes API
@@ -51,27 +87,21 @@ function getDrinks() {
     })
 }
 
-function makeList() {
-    input
-}
-
-
 ingredientAddBtn.on('click', function() {
-    var addIngredient = document.createElement('input')
-    addIngredient.setAttribute('type', 'text')
-    addIngredient.setAttribute('readonly', true)
-    addIngredient.setAttribute('value', form.val())
+    var addIngredient = document.createElement('li')
+    addIngredient.textContent = ingredients.val()
     ingredientList.append(addIngredient)
+    ingredientsArray.push(ingredients.val())
+    console.log(ingredientsArray)
 })
 
-
-
-
-
-
-
-
-
+excludeAddBtn.on('click', function() {
+    var addExclude = document.createElement('li')
+    addExclude.textContent = exclude.val()
+    excludeList.append(addExclude)
+    excludeArray.push(exclude.val())
+    console.log(excludeArray)
+})
 
 
 
@@ -86,3 +116,6 @@ dinnerBoxBtn.on('click', function() {
 drinkBoxBtn.on('click', function() {
     drinkSearchBox.show()
 })
+
+//inside search boxes do it button
+searchBtn.on('click', getRecipes)
