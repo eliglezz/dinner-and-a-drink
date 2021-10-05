@@ -3,6 +3,7 @@ article {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 #header {
     padding-top: 10px;
     padding-bottom: 2px;
@@ -12,21 +13,22 @@ article {
 #header div {
     height: 50px;
 }
-#do-it-div {
+.do-it-div {
     display: flex;
-    margin: 0 auto;
-    width: fit-content;
-    box-sizing: border-box;
-    padding: 75px 0;
-    margin-top: 20px;
+    justify-content: center;
+    height: fit-content;
 
 }
+
 #do-it {
-    /* height: fit-content; */
+    height: fit-content;
+    width: fit-content;
 }
-/* #tester {
+#do-it-drink {
+    height: fit-content;
+    width: fit-content;
+}
 
-} */
 .container-fluid {
     padding-top: 20px;
 }
@@ -42,3 +44,14 @@ article {
     display: flex;
     justify-content: space-around;
 }
+
+img {
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    width: 250px;
+  }
+  
+  img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    opacity: .5;
+  } 
