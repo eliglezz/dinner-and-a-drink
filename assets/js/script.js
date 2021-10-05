@@ -190,46 +190,73 @@ function getDrinks() {
 }
 })
 }
-
-//in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
-ingredientAddBtn.on('click', function() {
+function addIngredientList(event) {
+    console.log(event)
     var addIngredient = document.createElement('li')
     addIngredient.textContent = ingredients.val()
     ingredientList.append(addIngredient)
     ingredientsArray.push(ingredients.val())
+    ingredients.val('')
     console.log(ingredientsArray)
-})
-
-ingredients.on('keydown', function(event) {
-if (event.keyCode === 13) {
-    event.preventDefault()
-    ingredientAddBtn.click()
 }
-})
-
-excludeAddBtn.on('click', function() {
+function addExcludeList() {
     var addExclude = document.createElement('li')
     addExclude.textContent = exclude.val()
     excludeList.append(addExclude)
     excludeArray.push(exclude.val())
+    exclude.val('')
     console.log(excludeArray)
-})
+}
+//in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
+ingredientAddBtn.on('click', addIngredientList)
 
-//drink search card add ingredients and choose alcoholic on non
-drinkIngredientAddBtn.on('click', function() {
+ingredients.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+    console.log(event)
+    event.preventDefault()
+    addIngredientList()
+    }
+})
+exclude.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        console.log(event)
+        event.preventDefault()
+        addExcludeList()
+    }
+})
+drinkIngredient.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        console.log(event)
+        event.preventDefault()
+        addDrinkIngredientList()
+    }
+    })
+
+excludeAddBtn.on('click', addExcludeList)
+
+function addDrinkIngredientList() {
     var addDrinkIngredient = document.createElement('li')
     addDrinkIngredient.textContent = drinkIngredient.val()
     drinkIngredientList.append(addDrinkIngredient)
     drinkIngredientsArray.push(drinkIngredient.val())
     console.log(drinkIngredientsArray)
-})
+    drinkIngredient.val('')
+}
+//drink search card add ingredients and choose alcoholic on non
+drinkIngredientAddBtn.on('click', addDrinkIngredientList)
 
 
 
 
 function clearPast() {    
-    ingredientList.innerHTML = ""
+    ingredientList.each(function(i) {
+        $(this).html("")
 
+    })
+    excludeList.each(function(i) {
+        $(this).html("")
+
+    })
 }
 
 //hides the search boxex until needed currently disabled so we can see them as we build
@@ -248,6 +275,7 @@ drinkBoxBtn.on('click', function() {
     drinkSearchBox.show()
     dinnerSearchBox.hide()
     recipeContainer.hide()
+    clearPast()
 })
 
 //inside search boxes do it button

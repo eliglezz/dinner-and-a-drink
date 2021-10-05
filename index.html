@@ -17,12 +17,12 @@
 </header>
 <body>
     <main class="container-fluid">
-        <article data-theme= "dark">
+        <article>
             <p id="site-info">Welcome! We've all experienced the paralysis of choice when it comes to eating dinner.  We've all had that moment when you have a refrigerator full of delicious ingredients and you can't come up with a single thing to eat or drink.  Well, we have created a simple tool to help get you started.  Just tell us what you have sitting around, and we will help find the perfect recipe to make for dinner, and the perfect cocktail to wash it down.  Get started just below!</p>
         </article>
         <div class="container-fluid" id="buttonholder">
-            <button type="button" data-theme= "dark" id="dinnerBtn">Dinner</button>
-            <button type="button" data-theme= "dark" id="drinkBtn">Drinks</button>
+            <button type="button" id="dinnerBtn" class="outline contrast">Dinner</button>
+            <button type="button" id="drinkBtn" class="outline contrast">Drinks</button>
         </div>
 
         <!-- dinner container -->
@@ -63,8 +63,8 @@
             <div>
                 <form>
                     <label for="ingredients">Ingredients:</label>
-                    <input type="text" id="drink-ingredients" name="ingredients">
-                    <button type="button" class="drink-add-btn btn-primary btn-lg btn-block">ADD</button>
+                    <input type="text" id="drink-ingredients" name="drink-ingredients" class="outline contrast">
+                    <button type="button" class="add-btn btn-primary btn-lg btn-block">ADD</button>
                 </form>
                 <p>Add ingredients you would like included in your cocktail here!</p>
             </div>
