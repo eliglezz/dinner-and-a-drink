@@ -188,8 +188,14 @@ excludeAddBtn.on('click', function() {
 })
 
 function clearPast() {    
-    ingredientList.innerHTML = ""
+    ingredientList.each(function(i) {
+        $(this).html("")
 
+    })
+    excludeList.each(function(i) {
+        $(this).html("")
+
+    })
 }
 
 //hides the search boxex until needed currently disabled so we can see them as we build
