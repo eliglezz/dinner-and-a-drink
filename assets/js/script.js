@@ -26,6 +26,16 @@ var searchBtn = $("#do-it")
 var excludeAddBtn = $(".exclude-btn")
 var excludeList = $(".exclude-list")
 var exclude = $("#exclude")
+
+//inside drink search box
+var drinkIngredientAddBtn = $(".drink-add-btn")
+var drinkIngredient = $("#drink-ingredients")
+var drinkIngredientList = $(".drink-ingredient-list")
+var drinkIngredientsArray = []
+var drinkIDArray = []
+var drinkSearchBtn = $("#do-it-drink")
+
+//recipe cards container
 var recipeContainer = $("#recipe-cards")
 
 
@@ -144,6 +154,7 @@ function getRecipes() {
 
 //drink recipes API
 function getDrinks() {
+    drinkItems = drinkIngredientsArray.join()
     var requestURL2 = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/filter.php?i=" + drinkItems
 
 
@@ -153,13 +164,21 @@ function getDrinks() {
     })
     .then(function(data2) {
         console.log(data2)
-    })
+    
 
     //first response only contains drink names, thumbnail pic link, and drink id, second fetch searches each of the first fetch result id's for detailed info on each drink
-    for (var i = 0; i < SOMETHING.length; i++)
-    var drinkID = data2.drinks.idDrink[i]
-
-    var secondSearch = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID
+    for (var i = 0; i < data2.drinks.length; i++) {
+    var drinkID = data2.drinks[i].idDrink
+        drinkIDArray.push(drinkID)
+        console.log(drinkIDArray)
+        console.log(drinkID)
+        // var drinkIDString = drinkIDArray.join()
+    }
+    
+    for (i = 0; i < drinkIDArray.length; i++) {
+    var secondSearch = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/lookup.php?i=" + drinkIDArray[i]
+    console.log(secondSearch)
+    
 
     fetch(secondSearch)
     .then(function(response3) {
@@ -168,6 +187,8 @@ function getDrinks() {
     .then(function(data3) {
         console.log(data3)
     })
+}
+})
 }
 
 //in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
@@ -179,6 +200,13 @@ ingredientAddBtn.on('click', function() {
     console.log(ingredientsArray)
 })
 
+ingredients.on('keydown', function(event) {
+if (event.keyCode === 13) {
+    event.preventDefault()
+    ingredientAddBtn.click()
+}
+})
+
 excludeAddBtn.on('click', function() {
     var addExclude = document.createElement('li')
     addExclude.textContent = exclude.val()
@@ -186,6 +214,18 @@ excludeAddBtn.on('click', function() {
     excludeArray.push(exclude.val())
     console.log(excludeArray)
 })
+
+//drink search card add ingredients and choose alcoholic on non
+drinkIngredientAddBtn.on('click', function() {
+    var addDrinkIngredient = document.createElement('li')
+    addDrinkIngredient.textContent = drinkIngredient.val()
+    drinkIngredientList.append(addDrinkIngredient)
+    drinkIngredientsArray.push(drinkIngredient.val())
+    console.log(drinkIngredientsArray)
+})
+
+
+
 
 function clearPast() {    
     ingredientList.innerHTML = ""
@@ -212,3 +252,4 @@ drinkBoxBtn.on('click', function() {
 
 //inside search boxes do it button
 searchBtn.on('click', getRecipes)
+drinkSearchBtn.on('click',getDrinks)
