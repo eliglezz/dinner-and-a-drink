@@ -1,7 +1,17 @@
 
+main {
+    height: 100vh;
+}
+input {
+    border: 1px solid black;
+}
 article {
     margin-top: 0;
     margin-bottom: 0;
+
+}
+#site-info {
+    color: black;
 }
 
 #header {
