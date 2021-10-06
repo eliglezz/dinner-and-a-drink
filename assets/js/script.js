@@ -168,14 +168,13 @@ function getDrinks() {
             console.log(data2)
             console.log(data2.drinks)
             if (data2.drinks == 'None Found') {
+                picoModal("Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show()
                 $("#first-card").hide()
                 $("#second-card").hide()
                 $("#third-card").hide()
                 $("#fourth-card").hide()
                 $("#fifth-card").hide()
                 $("#sixth-card").hide()
-                var sorryResponse = "<p>Sorry. Your search parameters returned no results. Please click on the Drinks button to try again</p>"
-                $("#recipe-cards").append(sorryResponse)
             } else {
 
                 //first response only contains drink names, thumbnail pic link, and drink id, second fetch searches each of the first fetch result id's for detailed info on each drink
