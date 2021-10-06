@@ -73,23 +73,12 @@
                 </ul>
             </div>
             <div class="drink-parameters">
-                <fieldset>
-                    <legend>Options</legend>
-                    <label for="non-alc">
-                      <input type="radio" id="non-alc" name="size" value="non-alc" checked>
-                      Non-Alcoholic
-                    </label>
-                    <label for="alc">
-                      <input type="radio" id="alc" name="size" value="alc">
-                      Alcoholic
-                    </label>
-                  </fieldset>
-                <fieldset>
-                    <label for="random">
-                      <input type="checkbox" id="random" name="random">
-                      Give me a random Drink!
-                    </label>
-                </fieldset>
+                <button type="button" id="random">Give me Random Drinks!</button>
+                <form id="drink-search">
+                    <label for="drink-search">Search for a cocktail by name:</label>
+                    <input type="text" id="searchByName" name="searchByName">
+                    <button type="button" id="searchByNameBtn">Search</button>
+                </form>
                 
             </div>
         </div>
@@ -101,7 +90,7 @@
         <!-- recipe cards -->
         <article id="recipe-cards">
             <div class="grid ">
-                <article id="first-card">
+                <article id="first-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
@@ -116,7 +105,7 @@
                         </footer>
                     </hgroup>
                 </article>
-                <article id="second-card">
+                <article id="second-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
@@ -133,7 +122,7 @@
                 </article>  
             </div>
             <div class="grid">
-                <article id="third-card">
+                <article id="third-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
@@ -148,7 +137,7 @@
                         </footer>
                     </hgroup>
                 </article>  
-                <article id="fourth-card">
+                <article id="fourth-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
@@ -165,7 +154,7 @@
                 </article>  
             </div>
             <div class="grid">
-                <article id="fifth-card">
+                <article id="fifth-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
@@ -180,7 +169,7 @@
                         </footer>
                     </hgroup>
                 </article>  
-                <article id="sixth-card">
+                <article id="sixth-card" class="show-card">
                     <hgroup>
                         <header>
                             <div class="grid">
