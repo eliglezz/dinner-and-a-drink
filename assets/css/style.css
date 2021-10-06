@@ -1,3 +1,26 @@
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    --primary:  #638560;
+    --primary-hover: #41583f;
+    --primary-focus: #c6fcf8;
+    --primary-inverse: #c6fcf8;
+    --background-color: #334443;
+    --card-background-color:#34656D;
+    --form-element-background-color:var(--background-color);
+    --form-element-active-border-color: var(--);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
+    --color: #c6fcf8;
+    --h1-color: #c6fcf8;
+    --h2-color: #c6fcf8;
+    --h3-color: #c6fcf8;
+    --h4-color: #c6fcf8;
+    --h5-color: #c6fcf8;
+    --h6-color: #c6fcf8;    
+    --muted-color: #c6fcf8;
+}
+
 
 main {
     height: 100vh;
