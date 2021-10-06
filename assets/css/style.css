@@ -1,23 +1,24 @@
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-    --primary:  #94c290;
-    --primary-hover: #638560;
-    --primary-focus: #FFFBDF;
-    --primary-inverse: #334443;
-    --background-color: #94c290;
-    --card-background-color:#baf3b5;
-    --form-element-active-border-color: var(--primary);
+    --primary:  #638560;
+    --primary-hover: #41583f;
+    --primary-focus: #c6fcf8;
+    --primary-inverse: #c6fcf8;
+    --background-color: #334443;
+    --card-background-color:#34656D;
+    --form-element-background-color:var(--background-color);
+    --form-element-active-border-color: var(--);
     --form-element-focus-color: var(--primary-focus);
     --switch-color: var(--primary-inverse);
     --switch-checked-background-color: var(--primary);
-    --color: #334443;
-    --h1-color: #334443;
-    --h2-color: #e36d6d;
-    --h3-color: #e36d6d;
-    --h4-color: #e36d6d;
-    --h5-color: #e67d7d;
-    --h6-color: #e67d7d;
-    --muted-color: #73828c;
+    --color: #c6fcf8;
+    --h1-color: #c6fcf8;
+    --h2-color: #c6fcf8;
+    --h3-color: #c6fcf8;
+    --h4-color: #c6fcf8;
+    --h5-color: #c6fcf8;
+    --h6-color: #c6fcf8;    
+    --muted-color: #c6fcf8;
 }
 
 
