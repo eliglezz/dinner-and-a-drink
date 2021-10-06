@@ -271,35 +271,41 @@ function addExcludeList() {
     document.querySelector("#exclude-form").reset()
     console.log(excludeArray)
 }
+
+function addDrinkIngredientList() {
+    var addDrinkIngredient = document.createElement('li')
+    addDrinkIngredient.textContent = drinkIngredient.val()
+    drinkIngredientList.append(addDrinkIngredient)
+    drinkIngredientsArray.push(drinkIngredient.val())
+    console.log(drinkIngredientsArray)
+    drinkIngredient.val('')
+}
+
 //in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
 ingredientAddBtn.on('click', addIngredientList)
 
 ingredients.on('keydown', function(event) {
     if (event.keyCode === 13) {
-    console.log(event)
     event.preventDefault()
     addIngredientList()
     }
 })
-exclude.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-        console.log(event)
-        event.preventDefault()
-        addExcludeList()
-    }
-})
-drinkIngredient.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-        console.log(event)
-        event.preventDefault()
-        addDrinkIngredientList()
-    }
-    })
+
+excludeAddBtn.on('click', addExcludeList)
 
 exclude.on('keydown', function(event) {
     if (event.keyCode === 13) {
         event.preventDefault()
-        excludeAddBtn.click()
+        addExcludeList()
+    }
+})
+
+drinkIngredientAddBtn.on('click', addDrinkIngredientList)
+
+drinkIngredient.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addDrinkIngredientList()
     }
     })
 
@@ -315,7 +321,7 @@ exclude.on('keydown', function(event) {
 // })
 
 //drink search card add ingredients and choose alcoholic on non
-drinkIngredientAddBtn.on('click', addDrinkIngredientList)
+
 
 drinkIngredient.on('keydown', function(event) {
     if (event.keyCode === 13) {
@@ -323,6 +329,7 @@ drinkIngredient.on('keydown', function(event) {
         drinkIngredientAddBtn.click()
     }
     })
+
 
 //removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed 
 
@@ -333,11 +340,12 @@ drinkIngredient.on('keydown', function(event) {
 //     excludeArray.length = 0
 // }
 
-// function clearPastDrink() {    
-//     drinkIngredientList.empty()
-//     drinkIngredientsArray.length = 0
-//     drinkIDArray.length = 0
-//     drinkResults.length = 0
+function clearPastDrink() {    
+    drinkIngredientList.empty()
+    drinkIngredientsArray.length = 0
+    drinkIDArray.length = 0
+    drinkResults.length = 0
+}
 
 function clearPast() {    
     ingredientList.each(function(i) {
