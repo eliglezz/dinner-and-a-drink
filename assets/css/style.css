@@ -29,18 +29,28 @@ input {
   border: 1px solid var(--color);
 }
 article {
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+
 }
-/* #site-info {
-  color: black;
-} */
+
 
 #header {
-  padding-top: 10px;
-  padding-bottom: 2px;
-  text-align: center;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    text-align: center;
+    
+    
 }
+.metro {
+
+    font-family: 'Metrophobic', sans-serif;
+}
+.barlow {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
 #header div {
   height: 50px;
 }
@@ -81,7 +91,36 @@ a img {
   width: 250px;
 }
 
-img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-  opacity: 0.5;
+a {
+     max-width: fit-content;
+}
+#subheader {
+    height: 200px;
+    padding-top: 50px;
+    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
+
+    
+
+}
+.show-card {
+    padding-bottom: 10px;
+    margin: 5px;
+    border: 1px solid white;
+}
+.show-card li{
+    font-size: 12px;
+}
+.show-card h5 {
+    height: fit-content;
+}
+.drink-container {
+    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
+
+}
+.recipe-search {
+    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
+
+}
+#recipe-cards {
+    background: none;
 }
