@@ -530,6 +530,11 @@ function getSearchedDrink() {
                 var listedDrinkIngredients = document.createElement("li")
                 listedDrinkIngredients.textContent = eachDrinkIngredient
                 $("#first-list").append(listedDrinkIngredients)  
+                $("#second-card").hide()
+                $("#third-card").hide()
+                $("#fourth-card").hide()
+                $("#fifth-card").hide()
+                $("#sixth-card").hide()
                 }
             }
                 
@@ -544,7 +549,8 @@ function getSearchedDrink() {
                 var eachDrinkIngredient = data2.drinks[1]['strIngredient' + i]
                 var listedDrinkIngredients = document.createElement("li")
                 listedDrinkIngredients.textContent = eachDrinkIngredient
-                $("#second-list").append(listedDrinkIngredients)  
+                $("#second-list").append(listedDrinkIngredients) 
+                $("#second-card").show() 
                 }
             }
 
@@ -560,6 +566,7 @@ function getSearchedDrink() {
                 var listedDrinkIngredients = document.createElement("li")
                 listedDrinkIngredients.textContent = eachDrinkIngredient
                 $("#third-list").append(listedDrinkIngredients)  
+                $("#third-card").show()
                 }
             }
         
@@ -575,6 +582,7 @@ function getSearchedDrink() {
                 var listedDrinkIngredients = document.createElement("li")
                 listedDrinkIngredients.textContent = eachDrinkIngredient
                 $("#fourth-list").append(listedDrinkIngredients)  
+                $("#fourth-card").show()
                 }
                 }
         
@@ -590,6 +598,7 @@ function getSearchedDrink() {
                     var listedDrinkIngredients = document.createElement("li")
                     listedDrinkIngredients.textContent = eachDrinkIngredient
                     $("#fifth-list").append(listedDrinkIngredients)  
+                    $("#fifth-card").show()
                     }
                     }
         
@@ -605,6 +614,7 @@ function getSearchedDrink() {
                 var listedDrinkIngredients = document.createElement("li")
                 listedDrinkIngredients.textContent = eachDrinkIngredient
                 $("#sixth-list").append(listedDrinkIngredients)  
+                $("#sixth-card").show()
                 
                 }
                 }
