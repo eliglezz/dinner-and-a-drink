@@ -144,6 +144,7 @@ function getRecipes() {
         }
       })
       recipeContainer.show()
+      dinnerSearchBox.hide()
 }
 
 //drink recipes API
@@ -213,22 +214,71 @@ function getDrinks() {
         $("#sixth-image").attr('alt', drinkResults[5].drinks[0].idDrink)
 
         // first card create list for ingredients
-    //     for (var i = 1; i < 15; i++) {
-    //         if (drinkResults[0].drinks[0].strIngredient[i] !== null){
-    //     var eachDrinkIngredient = drinkResults[0].drinks[0].strIngredient
-    //     var listedDrinkIngredients = document.createElement("li")
-    //     listedDrinkIngredients.textContent = eachDrinkIngredient
-    //     $("#first-list").append(listedDrinkIngredients)  
-    //     }
-    // }
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[0].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[0].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#first-list").append(listedDrinkIngredients)  
+        }
+    }
+
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[1].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[1].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#second-list").append(listedDrinkIngredients)  
+        }
+    }
+
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[2].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[2].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#third-list").append(listedDrinkIngredients)  
+        }
+        }
+
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[3].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[3].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#fourth-list").append(listedDrinkIngredients)  
+        }
+        }
+
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[4].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[4].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#fifth-list").append(listedDrinkIngredients)  
+        }
+        }
+
+        for (var i = 1; i < 15; i++) {
+            if (drinkResults[5].drinks[0]['strIngredient' + i] !== null){
+        var eachDrinkIngredient = drinkResults[5].drinks[0]['strIngredient' + i]
+        var listedDrinkIngredients = document.createElement("li")
+        listedDrinkIngredients.textContent = eachDrinkIngredient
+        $("#sixth-list").append(listedDrinkIngredients)  
+        }
+        }    
     })
     }
     })
     recipeContainer.show()
+    drinkSearchBox.hide()
 }
 
 //functions directed towards by listeners below
 function addIngredientList(event) {
+    if (ingredients == ""){
+
+    } else {
     console.log(event)
     var addIngredient = document.createElement('li')
     addIngredient.textContent = ingredients.val()
@@ -237,8 +287,12 @@ function addIngredientList(event) {
     document.querySelector("#dinner-form").reset()
     console.log(ingredientsArray)
 }
+}
 
 function addExcludeList() {
+    if (exclude == ""){
+        
+    } else {
     var addExclude = document.createElement('li')
     addExclude.textContent = exclude.val()
     excludeList.append(addExclude)
@@ -246,8 +300,12 @@ function addExcludeList() {
     document.querySelector("#exclude-form").reset()
     console.log(excludeArray)
 }
+}
 
 function addDrinkIngredientList() {
+    if (drinkIngredient == ""){
+        
+    } else {
     var addDrinkIngredient = document.createElement('li')
     addDrinkIngredient.textContent = drinkIngredient.val()
     drinkIngredientList.append(addDrinkIngredient)
@@ -255,10 +313,12 @@ function addDrinkIngredientList() {
     document.querySelector("#drink-form").reset()
     console.log(drinkIngredientsArray)
 }
+}
 
 //removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed 
 function clearPastDrink() {    
     drinkIngredientList.empty()
+    $(".ingredients-list").empty()  
     drinkIngredientsArray.length = 0
     drinkIDArray.length = 0
     drinkResults.length = 0
@@ -271,12 +331,12 @@ function clearPast() {
     excludeList.each(function(i) {
         $(this).html("")
     })
+    $(".ingredients-list").empty()
     ingredientsArray.length = 0
     excludeArray.length = 0
 }
 //LISTENERS--in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
 ingredientAddBtn.on('click', addIngredientList)
-
 ingredients.on('keydown', function(event) {
     if (event.keyCode === 13) {
         event.preventDefault()
