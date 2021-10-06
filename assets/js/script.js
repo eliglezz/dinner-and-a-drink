@@ -39,7 +39,6 @@ var drinkSearchBtn = $("#do-it-drink")
 //recipe cards container
 var recipeContainer = $("#recipe-cards")
 
-
 //dinner recipes API
 function getRecipes() {
     dinnerItems = ingredientsArray.join('%2C')
@@ -50,9 +49,6 @@ function getRecipes() {
     } else {
         excludeItems = '&excluded=' + excludeArray.join('&excluded=')
     }
-    
-    console.log(dinnerItems)
-    console.log(excludeItems)
 
     var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "&app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&ishType=Desserts&dishType=Main%20course&dishType=Starter&imageSize=REGULAR" + excludeItems + "&random=true&field=uri&field=label&field=image&field=source&field=ingredientLines&field=ingredients&field=url"
 
@@ -63,8 +59,6 @@ function getRecipes() {
         return response.json()
     })
     .then(function(data) {
-        console.log(data)
-
         //first card
         $("#first-name").text(data.hits[0].recipe.label)
         $("#first-link").attr('href', data.hits[0].recipe.url)
@@ -157,14 +151,12 @@ function getDrinks() {
     drinkItems = drinkIngredientsArray.join()
     var requestURL2 = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/filter.php?i=" + drinkItems
 
-
     fetch(requestURL2)
     .then(function(response2) {
         return response2.json()
     })
     .then(function(data2) {
         console.log(data2)
-    
 
     //first response only contains drink names, thumbnail pic link, and drink id, second fetch searches each of the first fetch result id's for detailed info on each drink
     for (var i = 0; i < data2.drinks.length; i++) {
@@ -174,7 +166,6 @@ function getDrinks() {
     
     for (i = 0; i < drinkIDArray.length; i++) {
     var secondSearch = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/lookup.php?i=" + drinkIDArray[i]
-    // console.log(secondSearch)
     
 
     fetch(secondSearch)
@@ -182,10 +173,8 @@ function getDrinks() {
         return response3.json()
     })
     .then(function(data3) {
-        // console.log(data3)
         drinkResults.push(data3)
         console.log(drinkResults)
-        console.log(drinkResults.length)
 
         //first card name, pic, and link creation
         $("#first-name").text(drinkResults[0].drinks[0].strDrink)
@@ -193,15 +182,11 @@ function getDrinks() {
         $("#first-image").attr('src', drinkResults[0].drinks[0].strDrinkThumb)
         $("#first-image").attr('alt', drinkResults[0].drinks[0].idDrink)
         
-        
-
         //second card name, pic, and link creation
         $("#second-name").text(drinkResults[1].drinks[0].strDrink)
         $("#second-link").attr('href', 'https://www.thecocktaildb.com/drink/' + drinkResults[1].drinks[0].idDrink)
         $("#second-image").attr('src', drinkResults[1].drinks[0].strDrinkThumb)
         $("#second-image").attr('alt', drinkResults[1].drinks[0].idDrink)
-        
-        
 
         //third card name, pic, and link creation
         $("#third-name").text(drinkResults[2].drinks[0].strDrink)
@@ -209,15 +194,11 @@ function getDrinks() {
         $("#third-image").attr('src', drinkResults[2].drinks[0].strDrinkThumb)
         $("#third-image").attr('alt', drinkResults[2].drinks[0].idDrink)
 
-        
-
         //fourth card name, pic, and link creation
         $("#fourth-name").text(drinkResults[3].drinks[0].strDrink)
         $("#fourth-link").attr('href', 'https://www.thecocktaildb.com/drink/' + drinkResults[3].drinks[0].idDrink)
         $("#fourth-image").attr('src', drinkResults[3].drinks[0].strDrinkThumb)
         $("#fourth-image").attr('alt', drinkResults[3].drinks[0].idDrink)
-
-        
 
         //fifth card name, pic, and link creation
         $("#fifth-name").text(drinkResults[4].drinks[0].strDrink)
@@ -225,15 +206,13 @@ function getDrinks() {
         $("#fifth-image").attr('src', drinkResults[4].drinks[0].strDrinkThumb)
         $("#fifth-image").attr('alt', drinkResults[4].drinks[0].idDrink)
 
-
         //sixth card name, pic, and link creation
         $("#sixth-name").text(drinkResults[5].drinks[0].strDrink)
         $("#sixth-link").attr('href', 'https://www.thecocktaildb.com/drink/' + drinkResults[5].drinks[0].idDrink)
         $("#sixth-image").attr('src', drinkResults[5].drinks[0].strDrinkThumb)
         $("#sixth-image").attr('alt', drinkResults[5].drinks[0].idDrink)
 
-
-        //first card create list for ingredients
+        // first card create list for ingredients
     //     for (var i = 1; i < 15; i++) {
     //         if (drinkResults[0].drinks[0].strIngredient[i] !== null){
     //     var eachDrinkIngredient = drinkResults[0].drinks[0].strIngredient
@@ -243,16 +222,12 @@ function getDrinks() {
     //     }
     // }
     })
-}
-    // console.log(drinkResults)
-    // console.log(drinkResults.length)
-    
-
-
-})
-recipeContainer.show()
+    }
+    })
+    recipeContainer.show()
 }
 
+//functions directed towards by listeners below
 function addIngredientList(event) {
     console.log(event)
     var addIngredient = document.createElement('li')
@@ -277,69 +252,11 @@ function addDrinkIngredientList() {
     addDrinkIngredient.textContent = drinkIngredient.val()
     drinkIngredientList.append(addDrinkIngredient)
     drinkIngredientsArray.push(drinkIngredient.val())
+    document.querySelector("#drink-form").reset()
     console.log(drinkIngredientsArray)
-    drinkIngredient.val('')
 }
 
-//in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
-ingredientAddBtn.on('click', addIngredientList)
-
-ingredients.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-    event.preventDefault()
-    addIngredientList()
-    }
-})
-
-excludeAddBtn.on('click', addExcludeList)
-
-exclude.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        addExcludeList()
-    }
-})
-
-drinkIngredientAddBtn.on('click', addDrinkIngredientList)
-
-drinkIngredient.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        addDrinkIngredientList()
-    }
-    })
-
-//drink search card add ingredients and choose alcoholic on non
-// drinkIngredientAddBtn.on('click', function() {
-//     var addDrinkIngredient = document.createElement('li')
-//     addDrinkIngredient.textContent = drinkIngredient.val()
-//     drinkIngredientList.append(addDrinkIngredient)
-//     drinkIngredientsArray.push(drinkIngredient.val())
-//     document.querySelector("#drink-form").reset()
-//     console.log(drinkIngredientsArray)
-//     drinkIngredient.val('')
-// })
-
-//drink search card add ingredients and choose alcoholic on non
-
-
-drinkIngredient.on('keydown', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        drinkIngredientAddBtn.click()
-    }
-    })
-
-
 //removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed 
-
-// function clearPastDinner() {    
-//     ingredientList.empty()
-//     excludeList.empty()
-//     ingredientsArray.length = 0
-//     excludeArray.length = 0
-// }
-
 function clearPastDrink() {    
     drinkIngredientList.empty()
     drinkIngredientsArray.length = 0
@@ -350,27 +267,47 @@ function clearPastDrink() {
 function clearPast() {    
     ingredientList.each(function(i) {
         $(this).html("")
-
     })
     excludeList.each(function(i) {
         $(this).html("")
-
     })
+    ingredientsArray.length = 0
+    excludeArray.length = 0
 }
+//LISTENERS--in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
+ingredientAddBtn.on('click', addIngredientList)
 
-//hides the search boxex until needed currently disabled so we can see them as we build
-dinnerSearchBox.hide()
-drinkSearchBox.hide()
-recipeContainer.hide()
+ingredients.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addIngredientList()
+    }
+})
+
+excludeAddBtn.on('click', addExcludeList)
+exclude.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addExcludeList()
+    }
+})
+
+drinkIngredientAddBtn.on('click', addDrinkIngredientList)
+drinkIngredient.on('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addDrinkIngredientList()
+    }
+    })
 
 //shows search boxes based on which user wants to search for
 dinnerBoxBtn.on('click', function() {
     dinnerSearchBox.show()
     drinkSearchBox.hide()
     recipeContainer.hide()
-    // clearPastDinner()
     clearPast()
 })
+
 drinkBoxBtn.on('click', function() {
     drinkSearchBox.show()
     dinnerSearchBox.hide()
@@ -381,3 +318,8 @@ drinkBoxBtn.on('click', function() {
 //inside search boxes do it button
 searchBtn.on('click', getRecipes)
 drinkSearchBtn.on('click',getDrinks)
+
+//hides the search boxex until needed currently disabled so we can see them as we build
+dinnerSearchBox.hide()
+drinkSearchBox.hide()
+recipeContainer.hide()
