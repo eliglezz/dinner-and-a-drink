@@ -165,7 +165,7 @@ function getDrinks() {
         drinkIDArray.push(drinkID)
     }
     
-    for (i = 0; i < drinkIDArray.length; i++) {
+    for (i = 0; i < 6; i++) {
     var secondSearch = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/lookup.php?i=" + drinkIDArray[i]
     
 
@@ -215,7 +215,7 @@ function getDrinks() {
 
         // first card create list for ingredients
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[0].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[0].drinks[0]['strIngredient' + i] !== null && drinkResults[0].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[0].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -224,7 +224,7 @@ function getDrinks() {
     }
 
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[1].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[1].drinks[0]['strIngredient' + i] !== null && drinkResults[1].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[1].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -233,7 +233,7 @@ function getDrinks() {
     }
 
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[2].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[2].drinks[0]['strIngredient' + i] !== null && drinkResults[2].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[2].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -242,7 +242,7 @@ function getDrinks() {
         }
 
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[3].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[3].drinks[0]['strIngredient' + i] !== null && drinkResults[3].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[3].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -251,7 +251,7 @@ function getDrinks() {
         }
 
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[4].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[4].drinks[0]['strIngredient' + i] !== null && drinkResults[4].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[4].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -260,7 +260,7 @@ function getDrinks() {
         }
 
         for (var i = 1; i < 15; i++) {
-            if (drinkResults[5].drinks[0]['strIngredient' + i] !== null){
+            if (drinkResults[5].drinks[0]['strIngredient' + i] !== null && drinkResults[5].drinks[0]['strIngredient' + i] !== ""){
         var eachDrinkIngredient = drinkResults[5].drinks[0]['strIngredient' + i]
         var listedDrinkIngredients = document.createElement("li")
         listedDrinkIngredients.textContent = eachDrinkIngredient
@@ -277,7 +277,7 @@ function getDrinks() {
 //functions directed towards by listeners below
 function addIngredientList(event) {
     if (ingredients == ""){
-
+        picoModal("Entry cannot be blank please add an item").show()
     } else {
     console.log(event)
     var addIngredient = document.createElement('li')
