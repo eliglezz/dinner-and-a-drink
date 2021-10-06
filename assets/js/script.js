@@ -272,6 +272,7 @@ function getDrinks() {
         }
         }    
     })
+    
     }
     })
     recipeContainer.show()

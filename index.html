@@ -21,8 +21,8 @@
             <p id="site-info">Welcome! We've all experienced the paralysis of choice when it comes to eating dinner.  We've all had that moment when you have a refrigerator full of delicious ingredients and you can't come up with a single thing to eat or drink.  Well, we have created a simple tool to help get you started.  Just tell us what you have sitting around, and we will help find the perfect recipe to make for dinner, and the perfect cocktail to wash it down.  Get started just below!</p>
         </article>
         <div class="container-fluid" id="buttonholder">
-            <button type="button" id="dinnerBtn" class="outline contrast">Dinner</button>
-            <button type="button" id="drinkBtn" class="outline contrast">Drinks</button>
+            <button type="button" id="dinnerBtn" class="">Dinner</button>
+            <button type="button" id="drinkBtn" class="">Drinks</button>
         </div>
 
         <!-- dinner container -->
@@ -186,7 +186,26 @@
                 </article>  
             </div>
         </article>
-
+         <!-- Modal -->
+        <div class="modal" id="inputModal" role="dialog" hidden>
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->$
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Hold Up</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p id="error">You must enter something</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/picomodal/3.0.0/picoModal.js"></script>
