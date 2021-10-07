@@ -420,9 +420,12 @@ function addIngredientList(event) {
 }
 
 function addExcludeList() {
-  if (exclude == "") {
+  if (exclude.val() == "") {
     picoModal("Entry cannot be blank please add an item").show();
     $(".pico-content").css("background-color", "var(--card-background-color)")
+    $(".pico-content").css("color", "white")
+    $(".pico-close").css("background-color", "var(--background-color)")
+
   } else {
     var addExclude = document.createElement("li");
     addExclude.textContent = exclude.val();
@@ -434,7 +437,7 @@ function addExcludeList() {
 }
 
 function addDrinkIngredientList() {
-  if (drinkIngredient == "") {
+  if (drinkIngredient.val() == "") {
     picoModal("Entry cannot be blank please add an item").show();
     $(".pico-content").css("background-color", "var(--card-background-color)")
   } else {
