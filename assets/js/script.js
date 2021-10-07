@@ -173,8 +173,7 @@ function getDrinks() {
             console.log(data2.drinks);
             if (data2.drinks == "None Found") {
                 picoModal(
-                    "Sorry. Your search parameters returned no results. Please click on the Drinks button to try again"
-                ).show();
+                    "Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
                 $("#first-card").hide();
                 $("#second-card").hide();
                 $("#third-card").hide();
@@ -507,7 +506,7 @@ function getDrinks() {
             recipeContainer.show();
             drinkSearchBox.hide();
         })
-
+    }
     //functions directed towards by listeners below
     function addIngredientList(event) {
         if (ingredients.val() == "") {
@@ -769,7 +768,6 @@ function getDrinks() {
         recipeContainer.show();
         drinkSearchBox.hide();
     }
-}
 
 function getSearchedDrink() {
     var searchCriteria = drinkSearchInput.val();
