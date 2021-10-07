@@ -521,6 +521,12 @@ function getRandomDrink() {
         cocktailKey +
         "/randomselection.php";
 
+    $("#second-card").show()
+    $("#third-card").show()
+    $("#fourth-card").show()
+    $("#fifth-card").show()
+    $("#sixth-card").show()
+
     fetch(requestURL2)
         .then(function (response2) {
             return response2.json();
