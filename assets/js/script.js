@@ -167,15 +167,10 @@ function getDrinks() {
             console.log(data2);
             console.log(data2.drinks);
             if (data2.drinks == "None Found") {
-<<<<<<< HEAD
-                picoModal(
-                    "Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
-=======
                 picoModal("Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
                 $(".pico-content").css("background-color", "var(--card-background-color)");
                 $(".pico-content").css("color", "white");
                 $(".pico-close").css("background-color", "var(--background-color)");
->>>>>>> 008887a5a4281cb0b0ed137afae1aa67aa41235c
                 $("#first-card").hide();
                 $("#second-card").hide();
                 $("#third-card").hide();
