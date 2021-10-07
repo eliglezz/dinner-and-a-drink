@@ -1,12 +1,12 @@
 //websites access
-var edamamApiKey = "e3dc2dfdc5b7caba73d800f52c560cdc";
-var appID = "4c72f271";
-var cocktailKey = "9973533";
+var edamamApiKey = "e3dc2dfdc5b7caba73d800f52c560cdc"
+var appID = "4c72f271"
+var cocktailKey = "9973533"
 
 //global available undefined until later
-var dinnerItems;
-var drinkItems;
-var excludeItems;
+var dinnerItems
+var drinkItems
+var excludeItems
 
 //dinner search box
 var dinnerSearchBox = $(".recipe-search")
@@ -17,77 +17,77 @@ var drinkSearchBox = $(".drink-container")
 var drinkBoxBtn = $("#drinkBtn")
 
 //inside dinner search box
-var ingredients = $("#ingredients");
-var ingredientList = $(".ingredient-list");
-var ingredientAddBtn = $(".add-btn");
-var ingredientsArray = [];
-var excludeArray = [];
-var searchBtn = $("#do-it");
-var excludeAddBtn = $(".exclude-btn");
-var excludeList = $(".exclude-list");
-var exclude = $("#exclude");
+var ingredients = $("#ingredients")
+var ingredientList = $(".ingredient-list")
+var ingredientAddBtn = $(".add-btn")
+var ingredientsArray = []
+var excludeArray = []
+var searchBtn = $("#do-it")
+var excludeAddBtn = $(".exclude-btn")
+var excludeList = $(".exclude-list")
+var exclude = $("#exclude")
 
 //inside drink search box
-var drinkIngredientAddBtn = $(".drink-add-btn");
-var drinkIngredient = $("#drink-ingredients");
-var drinkIngredientList = $(".drink-ingredient-list");
-var drinkIngredientsArray = [];
-var drinkIDArray = [];
-var drinkResults = [];
-var drinkSearchBtn = $("#do-it-drink");
-var randomBtn = $("#random");
-var drinkSearchInput = $("#searchByName");
-var drinkSearchBtn2 = $("#searchByNameBtn");
+var drinkIngredientAddBtn = $(".drink-add-btn")
+var drinkIngredient = $("#drink-ingredients")
+var drinkIngredientList = $(".drink-ingredient-list")
+var drinkIngredientsArray = []
+var drinkIDArray = []
+var drinkResults = []
+var drinkSearchBtn = $("#do-it-drink")
+var randomBtn = $("#random")
+var drinkSearchInput = $("#searchByName")
+var drinkSearchBtn2 = $("#searchByNameBtn")
 
 //recipe cards container
-var recipeContainer = $("#recipe-cards");
+var recipeContainer = $("#recipe-cards")
 
 //dinner recipes API
 function getRecipes() {
-    dinnerItems = ingredientsArray.join("%2C");
+    dinnerItems = ingredientsArray.join("%2C")
 
     //Adds excluded items into the url if there are any
     if (excludeArray.length == 0) {
         excludeItems = ""
     } else {
-        excludeItems = "&excluded=" + excludeArray.join("&excluded=");
+        excludeItems = "&excluded=" + excludeArray.join("&excluded=")
     }
 
     var requestURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + dinnerItems + "&app_id=" + appID + "&app_key=" + edamamApiKey + "&mealType=dinner&ishType=Desserts&dishType=Main%20course&dishType=Starter&imageSize=REGULAR" + excludeItems + "&random=true&field=uri&field=label&field=image&field=source&field=ingredientLines&field=ingredients&field=url";
 
-    console.log(requestURL);
+    console.log(requestURL)
 
     fetch(requestURL)
         .then(function (response) {
-            return response.json();
+            return response.json()
         })
         .then(function (data) {
             //first card
             $("#first-name").text(data.hits[0].recipe.label);
-            $("#first-link").attr("href", data.hits[0].recipe.url);
-            $("#first-image").attr("src", data.hits[0].recipe.image);
-            $("#first-image").attr("alt", data.hits[0].recipe.label);
+            $("#first-link").attr("href", data.hits[0].recipe.url)
+            $("#first-image").attr("src", data.hits[0].recipe.image)
+            $("#first-image").attr("alt", data.hits[0].recipe.label)
 
             //create list for ingredients
             for (var i = 0; i < data.hits[0].recipe.ingredientLines.length; i++) {
-                var eachIngredient = data.hits[0].recipe.ingredientLines[i];
-                var listedIngredients = document.createElement("li");
-                listedIngredients.textContent = eachIngredient;
-                $("#first-list").append(listedIngredients);
+                var eachIngredient = data.hits[0].recipe.ingredientLines[i]
+                var listedIngredients = document.createElement("li")
+                listedIngredients.textContent = eachIngredient
+                $("#first-list").append(listedIngredients)
             }
 
             //second card
-            $("#second-name").text(data.hits[1].recipe.label);
-            $("#second-link").attr("href", data.hits[1].recipe.url);
-            $("#second-image").attr("src", data.hits[1].recipe.image);
-            $("#second-image").attr("alt", data.hits[1].recipe.label);
+            $("#second-name").text(data.hits[1].recipe.label)
+            $("#second-link").attr("href", data.hits[1].recipe.url)
+            $("#second-image").attr("src", data.hits[1].recipe.image)
+            $("#second-image").attr("alt", data.hits[1].recipe.label)
 
             //create list for ingredients
             for (var i = 0; i < data.hits[1].recipe.ingredientLines.length; i++) {
-                var eachIngredient = data.hits[1].recipe.ingredientLines[i];
-                var listedIngredients = document.createElement("li");
-                listedIngredients.textContent = eachIngredient;
-                $("#second-list").append(listedIngredients);
+                var eachIngredient = data.hits[1].recipe.ingredientLines[i]
+                var listedIngredients = document.createElement("li")
+                listedIngredients.textContent = eachIngredient
+                $("#second-list").append(listedIngredients)
             }
 
             //third card
@@ -190,6 +190,8 @@ function getDrinks() {
                     searchLength = 6
                 }
 
+                console.log(searchLength)
+
                 for (i = 0; i < searchLength; i++) {
                     var secondSearch = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/lookup.php?i=" + drinkIDArray[i]
 
@@ -199,6 +201,13 @@ function getDrinks() {
                         })
                         .then(function (data3) {
                             drinkResults.push(data3)
+
+                            $("#second-card").show()
+                            $("#third-card").show()
+                            $("#fourth-card").show()
+                            $("#fifth-card").show()
+                            $("#sixth-card").show()
+
                             if (searchLength === 1) {
                                 $("#first-name").text(drinkResults[0].drinks[0].strDrink)
                                 $("#first-link").attr('href', 'https://www.thecocktaildb.com/drink/' + drinkResults[0].drinks[0].idDrink)
@@ -505,136 +514,6 @@ function getDrinks() {
         })
 }
 
-//functions directed towards by listeners below
-function addIngredientList(event) {
-    if (ingredients.val() == "") {
-        picoModal("Entry cannot be blank please add an item").show();
-        $(".pico-content").css("background-color", "var(--card-background-color)")
-        $(".pico-content").css("color", "white")
-        $(".pico-close").css("background-color", "var(--background-color)")
-    } else {
-        console.log(event);
-        var addIngredient = document.createElement("li");
-        addIngredient.textContent = ingredients.val();
-        ingredientList.append(addIngredient);
-        ingredientsArray.push(ingredients.val());
-        document.querySelector("#dinner-form").reset();
-        console.log(ingredientsArray);
-    }
-}
-
-
-function addExcludeList() {
-    if (exclude.val() == "") {
-        picoModal("Entry cannot be blank please add an item").show();
-        $(".pico-content").css("background-color", "var(--card-background-color)")
-        $(".pico-content").css("color", "white")
-        $(".pico-close").css("background-color", "var(--background-color)")
-    } else {
-        var addExclude = document.createElement("li");
-        addExclude.textContent = exclude.val();
-        excludeList.append(addExclude);
-        excludeArray.push(exclude.val());
-        document.querySelector("#exclude-form").reset();
-        console.log(excludeArray);
-    }
-}
-
-
-function addDrinkIngredientList() {
-    if (drinkIngredient.val() == "") {
-        picoModal("Entry cannot be blank please add an item").show();
-        $(".pico-content").css("background-color", "var(--card-background-color)")
-        $(".pico-content").css("color", "white")
-        $(".pico-close").css("background-color", "var(--background-color)")
-    } else {
-        var addDrinkIngredient = document.createElement("li");
-        addDrinkIngredient.textContent = drinkIngredient.val();
-        drinkIngredientList.append(addDrinkIngredient);
-        drinkIngredientsArray.push(drinkIngredient.val());
-        document.querySelector("#drink-form").reset();
-        console.log(drinkIngredientsArray);
-    }
-}
-
-
-//removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed
-function clearPastDrink() {
-    drinkIngredientList.empty();
-    $(".ingredients-list").empty();
-    drinkIngredientsArray.length = 0;
-    drinkIDArray.length = 0;
-    drinkResults.length = 0;
-}
-
-function clearPast() {
-    ingredientList.each(function (i) {
-        $(this).html("");
-    });
-    excludeList.each(function (i) {
-        $(this).html("");
-    });
-    $(".ingredients-list").empty();
-    ingredientsArray.length = 0;
-    excludeArray.length = 0;
-}
-
-//LISTENERS--in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
-ingredientAddBtn.on("click", addIngredientList);
-ingredients.on("keydown", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        addIngredientList();
-    }
-});
-
-excludeAddBtn.on("click", addExcludeList);
-exclude.on("keydown", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        addExcludeList();
-    }
-});
-
-drinkIngredientAddBtn.on("click", addDrinkIngredientList);
-drinkIngredient.on("keydown", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        addDrinkIngredientList();
-    }
-});
-
-drinkSearchInput.on("keydown", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        getSearchedDrink();
-    }
-});
-
-//shows search boxes based on which user wants to search for
-dinnerBoxBtn.on("click", function () {
-    dinnerSearchBox.show();
-    drinkSearchBox.hide();
-    recipeContainer.hide();
-    clearPast();
-});
-
-drinkBoxBtn.on("click", function () {
-    drinkSearchBox.show();
-    dinnerSearchBox.hide();
-    recipeContainer.hide();
-    clearPastDrink();
-});
-
-//inside search boxes do it button
-searchBtn.on("click", getRecipes);
-drinkSearchBtn.on("click", getDrinks);
-
-//hides the search boxex until needed
-dinnerSearchBox.hide()
-drinkSearchBox.hide()
-recipeContainer.hide()
-
 function getRandomDrink() {
     drinkItems = drinkIngredientsArray.join();
     var requestURL2 =
@@ -776,10 +655,9 @@ function getRandomDrink() {
     drinkSearchBox.hide();
 }
 
-
 function getSearchedDrink() {
     var searchCriteria = drinkSearchInput.val();
-    drinkItems = drinkIngredientsArray.join();
+    searchCriteria = searchCriteria.replace(" ", "+");
     var requestURL2 = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/search.php?s=" + searchCriteria;
     console.log(requestURL2);
     fetch(requestURL2)
@@ -788,141 +666,156 @@ function getSearchedDrink() {
         })
         .then(function (data2) {
             console.log(data2);
-            $("#second-card").hide();
-            $("#third-card").hide();
-            $("#fourth-card").hide();
-            $("#fifth-card").hide();
-            $("#sixth-card").hide();
-            //first card name, pic, and link creation
-            $("#first-name").text(data2.drinks[0].strDrink);
-            $("#first-link").attr(
-                "href",
-                "https://www.thecocktaildb.com/drink/" + data2.drinks[0].idDrink
-            );
-            $("#first-image").attr("src", data2.drinks[0].strDrinkThumb);
-            $("#first-image").attr("alt", data2.drinks[0].strDrink);
-            for (var i = 1; i < 15; i++) {
-                if (
-                    data2.drinks[0]["strIngredient" + i] !== null &&
-                    data2.drinks[0]["strIngredient" + i] !== ""
-                ) {
-                    var eachDrinkIngredient = data2.drinks[0]["strIngredient" + i];
-                    var listedDrinkIngredients = document.createElement("li");
-                    listedDrinkIngredients.textContent = eachDrinkIngredient;
-                    $("#first-list").append(listedDrinkIngredients);
-                }
-            }
-
-            //second card name, pic, and link creation
-            if (data2.drinks.length > 1) {
-                $("#second-name").text(data2.drinks[1].strDrink);
-                $("#second-link").attr(
+            console.log(data2);
+            console.log(data2.drinks);
+            if (data2.drinks == "None Found" || data2.drinks == null) {
+                picoModal("Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
+                $(".pico-content").css("background-color", "var(--card-background-color)");
+                $(".pico-content").css("color", "white");
+                $(".pico-close").css("background-color", "var(--background-color)");
+                $("#first-card").hide();
+                $("#second-card").hide();
+                $("#third-card").hide();
+                $("#fourth-card").hide();
+                $("#fifth-card").hide();
+                $("#sixth-card").hide();
+            } else {
+                $("#second-card").hide();
+                $("#third-card").hide();
+                $("#fourth-card").hide();
+                $("#fifth-card").hide();
+                $("#sixth-card").hide();
+                //first card name, pic, and link creation
+                $("#first-name").text(data2.drinks[0].strDrink);
+                $("#first-link").attr(
                     "href",
-                    "https://www.thecocktaildb.com/drink/" + data2.drinks[1].idDrink
+                    "https://www.thecocktaildb.com/drink/" + data2.drinks[0].idDrink
                 );
-                $("#second-image").attr("src", data2.drinks[1].strDrinkThumb);
-                $("#second-image").attr("alt", data2.drinks[1].strDrink);
+                $("#first-image").attr("src", data2.drinks[0].strDrinkThumb);
+                $("#first-image").attr("alt", data2.drinks[0].strDrink);
                 for (var i = 1; i < 15; i++) {
                     if (
-                        data2.drinks[1]["strIngredient" + i] !== null &&
-                        data2.drinks[1]["strIngredient" + i] !== ""
+                        data2.drinks[0]["strIngredient" + i] !== null &&
+                        data2.drinks[0]["strIngredient" + i] !== ""
                     ) {
-                        var eachDrinkIngredient = data2.drinks[1]["strIngredient" + i];
+                        var eachDrinkIngredient = data2.drinks[0]["strIngredient" + i];
                         var listedDrinkIngredients = document.createElement("li");
                         listedDrinkIngredients.textContent = eachDrinkIngredient;
-                        $("#second-list").append(listedDrinkIngredients);
-                        $("#second-card").show();
+                        $("#first-list").append(listedDrinkIngredients);
                     }
                 }
 
-                //third card name, pic, and link creation
-                if (data2.drinks.length > 2) {
-                    $("#third-name").text(data2.drinks[2].strDrink);
-                    $("#third-link").attr(
+                //second card name, pic, and link creation
+                if (data2.drinks.length > 1) {
+                    $("#second-name").text(data2.drinks[1].strDrink);
+                    $("#second-link").attr(
                         "href",
-                        "https://www.thecocktaildb.com/drink/" + data2.drinks[2].idDrink
+                        "https://www.thecocktaildb.com/drink/" + data2.drinks[1].idDrink
                     );
-                    $("#third-image").attr("src", data2.drinks[2].strDrinkThumb);
-                    $("#third-image").attr("alt", data2.drinks[2].strDrink);
+                    $("#second-image").attr("src", data2.drinks[1].strDrinkThumb);
+                    $("#second-image").attr("alt", data2.drinks[1].strDrink);
                     for (var i = 1; i < 15; i++) {
                         if (
-                            data2.drinks[2]["strIngredient" + i] !== null &&
-                            data2.drinks[2]["strIngredient" + i] !== ""
+                            data2.drinks[1]["strIngredient" + i] !== null &&
+                            data2.drinks[1]["strIngredient" + i] !== ""
                         ) {
-                            var eachDrinkIngredient = data2.drinks[2]["strIngredient" + i];
+                            var eachDrinkIngredient = data2.drinks[1]["strIngredient" + i];
                             var listedDrinkIngredients = document.createElement("li");
                             listedDrinkIngredients.textContent = eachDrinkIngredient;
-                            $("#third-list").append(listedDrinkIngredients);
-                            $("#third-card").show();
+                            $("#second-list").append(listedDrinkIngredients);
+                            $("#second-card").show();
                         }
                     }
 
-                    //fourth card name, pic, and link creation
-                    if (data2.drinks.length > 3) {
-                        $("#fourth-name").text(data2.drinks[3].strDrink);
-                        $("#fourth-link").attr(
+                    //third card name, pic, and link creation
+                    if (data2.drinks.length > 2) {
+                        $("#third-name").text(data2.drinks[2].strDrink);
+                        $("#third-link").attr(
                             "href",
-                            "https://www.thecocktaildb.com/drink/" + data2.drinks[3].idDrink
+                            "https://www.thecocktaildb.com/drink/" + data2.drinks[2].idDrink
                         );
-                        $("#fourth-image").attr("src", data2.drinks[3].strDrinkThumb);
-                        $("#fourth-image").attr("alt", data2.drinks[3].strDrink);
+                        $("#third-image").attr("src", data2.drinks[2].strDrinkThumb);
+                        $("#third-image").attr("alt", data2.drinks[2].strDrink);
                         for (var i = 1; i < 15; i++) {
                             if (
-                                data2.drinks[3]["strIngredient" + i] !== null &&
-                                data2.drinks[3]["strIngredient" + i] !== ""
+                                data2.drinks[2]["strIngredient" + i] !== null &&
+                                data2.drinks[2]["strIngredient" + i] !== ""
                             ) {
-                                var eachDrinkIngredient = data2.drinks[3]["strIngredient" + i];
+                                var eachDrinkIngredient = data2.drinks[2]["strIngredient" + i];
                                 var listedDrinkIngredients = document.createElement("li");
                                 listedDrinkIngredients.textContent = eachDrinkIngredient;
-                                $("#fourth-list").append(listedDrinkIngredients);
-                                $("#fourth-card").show();
+                                $("#third-list").append(listedDrinkIngredients);
+                                $("#third-card").show();
                             }
                         }
 
-                        //fifth card name, pic, and link creation
-                        if (data2.drinks.length > 4) {
-                            $("#fifth-name").text(data2.drinks[4].strDrink);
-                            $("#fifth-link").attr(
+                        //fourth card name, pic, and link creation
+                        if (data2.drinks.length > 3) {
+                            $("#fourth-name").text(data2.drinks[3].strDrink);
+                            $("#fourth-link").attr(
                                 "href",
-                                "https://www.thecocktaildb.com/drink/" + data2.drinks[4].idDrink
+                                "https://www.thecocktaildb.com/drink/" + data2.drinks[3].idDrink
                             );
-                            $("#fifth-image").attr("src", data2.drinks[4].strDrinkThumb);
-                            $("#fifth-image").attr("alt", data2.drinks[4].strDrink);
+                            $("#fourth-image").attr("src", data2.drinks[3].strDrinkThumb);
+                            $("#fourth-image").attr("alt", data2.drinks[3].strDrink);
                             for (var i = 1; i < 15; i++) {
                                 if (
-                                    data2.drinks[4]["strIngredient" + i] !== null &&
-                                    data2.drinks[4]["strIngredient" + i] !== ""
+                                    data2.drinks[3]["strIngredient" + i] !== null &&
+                                    data2.drinks[3]["strIngredient" + i] !== ""
                                 ) {
-                                    var eachDrinkIngredient =
-                                        data2.drinks[4]["strIngredient" + i];
+                                    var eachDrinkIngredient = data2.drinks[3]["strIngredient" + i];
                                     var listedDrinkIngredients = document.createElement("li");
                                     listedDrinkIngredients.textContent = eachDrinkIngredient;
-                                    $("#fifth-list").append(listedDrinkIngredients);
-                                    $("#fifth-card").show();
+                                    $("#fourth-list").append(listedDrinkIngredients);
+                                    $("#fourth-card").show();
                                 }
                             }
 
-                            //sixth card name, pic, and link creation
-                            if (data2.drinks.length > 5) {
-                                $("#sixth-name").text(data2.drinks[5].strDrink);
-                                $("#sixth-link").attr(
+                            //fifth card name, pic, and link creation
+                            if (data2.drinks.length > 4) {
+                                $("#fifth-name").text(data2.drinks[4].strDrink);
+                                $("#fifth-link").attr(
                                     "href",
-                                    "https://www.thecocktaildb.com/drink/" +
-                                    data2.drinks[5].idDrink
+                                    "https://www.thecocktaildb.com/drink/" + data2.drinks[4].idDrink
                                 );
-                                $("#sixth-image").attr("src", data2.drinks[5].strDrinkThumb);
-                                $("#sixth-image").attr("alt", data2.drinks[5].strDrink);
+                                $("#fifth-image").attr("src", data2.drinks[4].strDrinkThumb);
+                                $("#fifth-image").attr("alt", data2.drinks[4].strDrink);
                                 for (var i = 1; i < 15; i++) {
                                     if (
-                                        data2.drinks[5]["strIngredient" + i] !== null &&
-                                        data2.drinks[5]["strIngredient" + i] !== ""
+                                        data2.drinks[4]["strIngredient" + i] !== null &&
+                                        data2.drinks[4]["strIngredient" + i] !== ""
                                     ) {
                                         var eachDrinkIngredient =
-                                            data2.drinks[5]["strIngredient" + i];
+                                            data2.drinks[4]["strIngredient" + i];
                                         var listedDrinkIngredients = document.createElement("li");
                                         listedDrinkIngredients.textContent = eachDrinkIngredient;
-                                        $("#sixth-list").append(listedDrinkIngredients);
-                                        $("#sixth-card").show();
+                                        $("#fifth-list").append(listedDrinkIngredients);
+                                        $("#fifth-card").show();
+                                    }
+                                }
+
+                                //sixth card name, pic, and link creation
+                                if (data2.drinks.length > 5) {
+                                    $("#sixth-name").text(data2.drinks[5].strDrink);
+                                    $("#sixth-link").attr(
+                                        "href",
+                                        "https://www.thecocktaildb.com/drink/" +
+                                        data2.drinks[5].idDrink
+                                    );
+                                    $("#sixth-image").attr("src", data2.drinks[5].strDrinkThumb);
+                                    $("#sixth-image").attr("alt", data2.drinks[5].strDrink);
+                                    for (var i = 1; i < 15; i++) {
+                                        if (
+                                            data2.drinks[5]["strIngredient" + i] !== null &&
+                                            data2.drinks[5]["strIngredient" + i] !== ""
+                                        ) {
+                                            var eachDrinkIngredient =
+                                                data2.drinks[5]["strIngredient" + i];
+                                            var listedDrinkIngredients = document.createElement("li");
+                                            listedDrinkIngredients.textContent = eachDrinkIngredient;
+                                            $("#sixth-list").append(listedDrinkIngredients);
+                                            $("#sixth-card").show();
+                                        }
                                     }
                                 }
                             }
@@ -930,21 +823,138 @@ function getSearchedDrink() {
                     }
                 }
             }
-        });
-
+        })
     recipeContainer.show();
     drinkSearchBox.hide();
+    document.querySelector("#drink-search").reset()
+}
+
+//functions directed towards by listeners below
+function addIngredientList(event) {
+    if (ingredients.val() == "") {
+        picoModal("Entry cannot be blank please add an item").show();
+        $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
+    } else {
+        console.log(event);
+        var addIngredient = document.createElement("li")
+        addIngredient.textContent = ingredients.val()
+        ingredientList.append(addIngredient)
+        ingredientsArray.push(ingredients.val())
+        document.querySelector("#dinner-form").reset()
+        console.log(ingredientsArray)
+    }
+}
+
+function addExcludeList() {
+    if (exclude.val() == "") {
+        picoModal("Entry cannot be blank please add an item").show()
+        $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
+    } else {
+        var addExclude = document.createElement("li")
+        addExclude.textContent = exclude.val()
+        excludeList.append(addExclude)
+        excludeArray.push(exclude.val())
+        document.querySelector("#exclude-form").reset()
+        console.log(excludeArray)
+    }
 }
 
 
-// function to hide unused cards//
-function hideUnusedCards() {
-    $(".show-card").each(function () {
-        if ($(this).find("a").attr("href") == "") {
-            $(this).hide();
-        }
+function addDrinkIngredientList() {
+    if (drinkIngredient.val() == "") {
+        picoModal("Entry cannot be blank please add an item").show();
+        $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
+    } else {
+        var addDrinkIngredient = document.createElement("li")
+        addDrinkIngredient.textContent = drinkIngredient.val()
+        drinkIngredientList.append(addDrinkIngredient)
+        drinkIngredientsArray.push(drinkIngredient.val())
+        document.querySelector("#drink-form").reset()
+        console.log(drinkIngredientsArray)
+    }
+}
+
+//removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed
+function clearPastDrink() {
+    drinkIngredientList.empty()
+    $(".ingredients-list").empty()
+    drinkIngredientsArray.length = 0;
+    drinkIDArray.length = 0;
+    drinkResults.length = 0;
+}
+
+function clearPast() {
+    ingredientList.each(function (i) {
+        $(this).html("")
     });
+    excludeList.each(function (i) {
+        $(this).html("")
+    });
+    $(".ingredients-list").empty()
+    ingredientsArray.length = 0
+    excludeArray.length = 0
 }
 
-drinkSearchBtn2.on("click", getSearchedDrink);
-randomBtn.on("click", getRandomDrink);
+//LISTENERS--in the dinner search card these allow user to add their available ingredients or choose recipes which include certain ingredients as criteria
+ingredientAddBtn.on("click", addIngredientList);
+ingredients.on("keydown", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addIngredientList()
+    }
+})
+
+excludeAddBtn.on("click", addExcludeList)
+exclude.on("keydown", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addExcludeList()
+    }
+})
+
+drinkIngredientAddBtn.on("click", addDrinkIngredientList)
+drinkIngredient.on("keydown", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        addDrinkIngredientList()
+    }
+})
+
+drinkSearchBtn2.on("click", getSearchedDrink)
+drinkSearchInput.on("keydown", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        getSearchedDrink()
+    }
+})
+
+//inside search boxes do it button
+searchBtn.on("click", getRecipes)
+drinkSearchBtn.on("click", getDrinks)
+randomBtn.on("click", getRandomDrink)
+
+//shows search boxes based on which user wants to search for
+dinnerBoxBtn.on("click", function () {
+    dinnerSearchBox.show()
+    drinkSearchBox.hide()
+    recipeContainer.hide()
+    clearPast()
+})
+
+drinkBoxBtn.on("click", function () {
+    drinkSearchBox.show()
+    dinnerSearchBox.hide()
+    recipeContainer.hide()
+    clearPastDrink()
+})
+
+//hides the search boxex until needed
+dinnerSearchBox.hide()
+drinkSearchBox.hide()
+recipeContainer.hide()
