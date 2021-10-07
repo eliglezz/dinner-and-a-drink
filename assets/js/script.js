@@ -167,9 +167,10 @@ function getDrinks() {
             console.log(data2);
             console.log(data2.drinks);
             if (data2.drinks == "None Found") {
-                picoModal(
-                    "Sorry. Your search parameters returned no results. Please click on the Drinks button to try again"
-                ).show();
+                picoModal("Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
+                $(".pico-content").css("background-color", "var(--card-background-color)");
+                $(".pico-content").css("color", "white");
+                $(".pico-close").css("background-color", "var(--background-color)");
                 $("#first-card").hide();
                 $("#second-card").hide();
                 $("#third-card").hide();
@@ -504,12 +505,13 @@ function getDrinks() {
         })
 }
 
-
 //functions directed towards by listeners below
 function addIngredientList(event) {
     if (ingredients.val() == "") {
         picoModal("Entry cannot be blank please add an item").show();
         $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
     } else {
         console.log(event);
         var addIngredient = document.createElement("li");
@@ -521,10 +523,13 @@ function addIngredientList(event) {
     }
 }
 
+
 function addExcludeList() {
-    if (exclude == "") {
+    if (exclude.val() == "") {
         picoModal("Entry cannot be blank please add an item").show();
         $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
     } else {
         var addExclude = document.createElement("li");
         addExclude.textContent = exclude.val();
@@ -535,10 +540,13 @@ function addExcludeList() {
     }
 }
 
+
 function addDrinkIngredientList() {
-    if (drinkIngredient == "") {
+    if (drinkIngredient.val() == "") {
         picoModal("Entry cannot be blank please add an item").show();
         $(".pico-content").css("background-color", "var(--card-background-color)")
+        $(".pico-content").css("color", "white")
+        $(".pico-close").css("background-color", "var(--background-color)")
     } else {
         var addDrinkIngredient = document.createElement("li");
         addDrinkIngredient.textContent = drinkIngredient.val();
@@ -548,6 +556,7 @@ function addDrinkIngredientList() {
         console.log(drinkIngredientsArray);
     }
 }
+
 
 //removes the listed items from dinner and drink containers and arrays if respective buttons every time they are pressed
 function clearPastDrink() {
@@ -771,11 +780,7 @@ function getRandomDrink() {
 function getSearchedDrink() {
     var searchCriteria = drinkSearchInput.val();
     drinkItems = drinkIngredientsArray.join();
-    var requestURL2 =
-        "https://www.thecocktaildb.com/api/json/v2/" +
-        cocktailKey +
-        "/search.php?s=" +
-        searchCriteria;
+    var requestURL2 = "https://www.thecocktaildb.com/api/json/v2/" + cocktailKey + "/search.php?s=" + searchCriteria;
     console.log(requestURL2);
     fetch(requestURL2)
         .then(function (response2) {
