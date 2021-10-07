@@ -1,6 +1,6 @@
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-    margin: 5px;
+  margin: 5px;
   --primary: #638560;
   --primary-hover: #41583f;
   --primary-focus: #c6fcf8;
@@ -29,26 +29,20 @@ input {
   border: 1px solid var(--color);
 }
 article {
-    margin-top: 0;
-    margin-bottom: 0;
-
-
+  margin-top: 0;
+  margin-bottom: 0;
 }
-
 
 #header {
-    padding-top: 10px;
-    padding-bottom: 2px;
-    text-align: center;
-    
-    
+  padding-top: 10px;
+  padding-bottom: 2px;
+  text-align: center;
 }
 .metro {
-
-    font-family: 'Metrophobic', sans-serif;
+  font-family: "Metrophobic", sans-serif;
 }
 .barlow {
-    font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 #header div {
@@ -92,35 +86,38 @@ a img {
 }
 
 a {
-     max-width: fit-content;
+  max-width: fit-content;
 }
 #subheader {
-    height: 200px;
-    padding-top: 50px;
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
-    
-
+  height: 200px;
+  padding-top: 50px;
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 .show-card {
-    padding-bottom: 10px;
-    margin: 5px;
-    border: 1px solid white;
+  padding-bottom: 10px;
+  margin: 5px;
+  border: 1px solid white;
 }
-.show-card li{
-    font-size: 12px;
+.show-card li {
+  font-size: 17px;
 }
 .show-card h5 {
-    height: fit-content;
+  height: fit-content;
 }
 .drink-container {
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 .recipe-search {
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 #recipe-cards {
-    background: none;
+  background: none;
+}
+
+.pico-content {
+  color: #334443;
+  
 }
