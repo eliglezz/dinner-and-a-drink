@@ -1,132 +1,123 @@
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-    --primary:  #638560;
-    --primary-hover: #41583f;
-    --primary-focus: #c6fcf8;
-    --primary-inverse: #c6fcf8;
-    --background-color: #334443;
-    --card-background-color:#34656D;
-    --form-element-background-color:var(--background-color);
-    --form-element-active-border-color: var(--);
-    --form-element-focus-color: var(--primary-focus);
-    --switch-color: var(--primary-inverse);
-    --switch-checked-background-color: var(--primary);
-    --color: #c6fcf8;
-    --h1-color: #c6fcf8;
-    --h2-color: #c6fcf8;
-    --h3-color: #c6fcf8;
-    --h4-color: #c6fcf8;
-    --h5-color: #c6fcf8;
-    --h6-color: #c6fcf8;    
-    --muted-color: #c6fcf8;
+  margin: 5px;
+  --primary: #638560;
+  --primary-hover: #41583f;
+  --primary-focus: #c6fcf8;
+  --primary-inverse: #c6fcf8;
+  --background-color: #334443;
+  --card-background-color: #34656d;
+  --form-element-background-color: var(--background-color);
+  --form-element-active-border-color: var(--);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+  --color: #c6fcf8;
+  --h1-color: #c6fcf8;
+  --h2-color: #c6fcf8;
+  --h3-color: #c6fcf8;
+  --h4-color: #c6fcf8;
+  --h5-color: #c6fcf8;
+  --h6-color: #c6fcf8;
+  --muted-color: #c6fcf8;
 }
-
 
 main {
-    height: 100vh;
+  height: 100vh;
 }
 input {
-    border: 1px solid black;
+  border: 1px solid var(--color);
 }
 article {
-    margin-top: 0;
-    margin-bottom: 0;
-
-
+  margin-top: 0;
+  margin-bottom: 0;
 }
-
 
 #header {
-    padding-top: 10px;
-    padding-bottom: 2px;
-    text-align: center;
-    
-    
+  padding-top: 10px;
+  padding-bottom: 2px;
+  text-align: center;
 }
 .metro {
-
-    font-family: 'Metrophobic', sans-serif;
+  font-family: "Metrophobic", sans-serif;
 }
 .barlow {
-    font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 #header div {
-    height: 50px;
+  height: 50px;
 }
 .do-it-div {
-    display: flex;
-    justify-content: center;
-    height: fit-content;
-
+  display: flex;
+  justify-content: center;
+  height: fit-content;
 }
 
 #do-it {
-    height: fit-content;
-    width: fit-content;
+  height: fit-content;
+  width: fit-content;
 }
 #do-it-drink {
-    height: fit-content;
-    width: fit-content;
+  height: fit-content;
+  width: fit-content;
 }
 
 .container-fluid {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 #dinnerBtn {
-    width: 200px;
-    display: inline;
+  width: 200px;
+  display: inline;
 }
 #drinkBtn {
-    width: 200px;
-    display: inline;
+  width: 200px;
+  display: inline;
 }
 #buttonholder {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-img {
-    border: 2px solid var(--primary);
-    border-radius: 4px;
-    width: 250px;
-  }
-  
-img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-    opacity: .5;
-} 
+a img {
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  width: 250px;
+}
 
 a {
-     max-width: fit-content;
+  max-width: fit-content;
 }
 #subheader {
-    height: 200px;
-    padding-top: 50px;
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
-    
-
+  height: 200px;
+  padding-top: 50px;
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 .show-card {
-    padding-bottom: 10px;
-    margin: 5px;
-    border: 1px solid white;
+  padding-bottom: 10px;
+  margin: 5px;
+  border: 1px solid white;
 }
-.show-card li{
-    font-size: 12px;
+.show-card li {
+  font-size: 17px;
 }
 .show-card h5 {
-    height: fit-content;
+  height: fit-content;
 }
 .drink-container {
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 .recipe-search {
-    box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88, -10px -5px 5px #3c7e88;
-
+  box-shadow: 10px -5px 5px #3c7e88, 10px 5px 5px #3c7e88, -10px 5px 5px #3c7e88,
+    -10px -5px 5px #3c7e88;
 }
 #recipe-cards {
-    background: none;
+  background: none;
+}
+
+.pico-content {
+  color: #334443;
+  
 }
