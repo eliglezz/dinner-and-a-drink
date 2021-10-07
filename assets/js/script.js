@@ -172,9 +172,10 @@ function getDrinks() {
             console.log(data2);
             console.log(data2.drinks);
             if (data2.drinks == "None Found") {
-                picoModal(
-                    "Sorry. Your search parameters returned no results. Please click on the Drinks button to try again"
-                ).show();
+                picoModal("Sorry. Your search parameters returned no results. Please click on the Drinks button to try again").show();
+                $(".pico-content").css("background-color", "var(--card-background-color)");
+                $(".pico-content").css("color", "white");
+                $(".pico-close").css("background-color", "var(--background-color)");
                 $("#first-card").hide();
                 $("#second-card").hide();
                 $("#third-card").hide();
@@ -507,12 +508,15 @@ function getDrinks() {
             recipeContainer.show();
             drinkSearchBox.hide();
         })
+    }
 
     //functions directed towards by listeners below
     function addIngredientList(event) {
         if (ingredients.val() == "") {
             picoModal("Entry cannot be blank please add an item").show();
             $(".pico-content").css("background-color", "var(--card-background-color)")
+            $(".pico-content").css("color", "white")
+            $(".pico-close").css("background-color", "var(--background-color)")
         } else {
             console.log(event);
             var addIngredient = document.createElement("li");
@@ -525,9 +529,11 @@ function getDrinks() {
     }
 
     function addExcludeList() {
-        if (exclude == "") {
+        if (exclude.val() == "") {
             picoModal("Entry cannot be blank please add an item").show();
             $(".pico-content").css("background-color", "var(--card-background-color)")
+            $(".pico-content").css("color", "white")
+            $(".pico-close").css("background-color", "var(--background-color)")
         } else {
             var addExclude = document.createElement("li");
             addExclude.textContent = exclude.val();
@@ -538,42 +544,12 @@ function getDrinks() {
         }
     }
 
-<<<<<<< HEAD
-function addExcludeList() {
-  if (exclude.val() == "") {
-    picoModal("Entry cannot be blank please add an item").show();
-    $(".pico-content").css("background-color", "var(--card-background-color)")
-    $(".pico-content").css("color", "white")
-    $(".pico-close").css("background-color", "var(--background-color)")
-
-  } else {
-    var addExclude = document.createElement("li");
-    addExclude.textContent = exclude.val();
-    excludeList.append(addExclude);
-    excludeArray.push(exclude.val());
-    document.querySelector("#exclude-form").reset();
-    console.log(excludeArray);
-  }
-}
-
-function addDrinkIngredientList() {
-  if (drinkIngredient.val() == "") {
-    picoModal("Entry cannot be blank please add an item").show();
-    $(".pico-content").css("background-color", "var(--card-background-color)")
-  } else {
-    var addDrinkIngredient = document.createElement("li");
-    addDrinkIngredient.textContent = drinkIngredient.val();
-    drinkIngredientList.append(addDrinkIngredient);
-    drinkIngredientsArray.push(drinkIngredient.val());
-    document.querySelector("#drink-form").reset();
-    console.log(drinkIngredientsArray);
-  }
-}
-=======
     function addDrinkIngredientList() {
-        if (drinkIngredient == "") {
+        if (drinkIngredient.val() == "") {
             picoModal("Entry cannot be blank please add an item").show();
             $(".pico-content").css("background-color", "var(--card-background-color)")
+            $(".pico-content").css("color", "white")
+            $(".pico-close").css("background-color", "var(--background-color)")
         } else {
             var addDrinkIngredient = document.createElement("li");
             addDrinkIngredient.textContent = drinkIngredient.val();
@@ -592,7 +568,6 @@ function addDrinkIngredientList() {
         drinkIDArray.length = 0;
         drinkResults.length = 0;
     }
->>>>>>> dev
 
     function clearPast() {
         ingredientList.each(function (i) {
@@ -802,16 +777,12 @@ function addDrinkIngredientList() {
         recipeContainer.show();
         drinkSearchBox.hide();
     }
-}
+
 
 function getSearchedDrink() {
     var searchCriteria = drinkSearchInput.val();
     drinkItems = drinkIngredientsArray.join();
-    var requestURL2 =
-        "https://www.thecocktaildb.com/api/json/v2/" +
-        cocktailKey +
-        "/search.php?s=" +
-        searchCriteria;
+    var requestURL2 ="https://www.thecocktaildb.com/api/json/v2/" + cocktailKey +"/search.php?s=" + searchCriteria;
     console.log(requestURL2);
     fetch(requestURL2)
         .then(function (response2) {
